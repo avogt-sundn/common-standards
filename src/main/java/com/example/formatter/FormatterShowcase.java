@@ -31,20 +31,97 @@ public class FormatterShowcase
   // Enum — brace on next line, each constant on its own line
   // -------------------------------------------------------------------------
 
-  private final List<Event>         events    = new ArrayList<>();
+  /**
+   * Severity levels used throughout this showcase.
+   */
+  public enum Severity
+  {
+    LOW, MEDIUM, HIGH, CRITICAL;
+
+    /**
+     * Returns {@code true} when action must be taken immediately.
+     *
+     * @return whether this severity is urgent
+     */
+    public boolean isUrgent()
+    {
+      return this == HIGH || this == CRITICAL;
+    }
+  }
 
   // -------------------------------------------------------------------------
   // Record — compact constructor, component list on one line (< 120 chars)
   // -------------------------------------------------------------------------
-  private final List<EventListener> listeners = new ArrayList<>();
+
+  /**
+   * Immutable event record.
+   *
+   * @param id unique identifier
+   * @param message human-readable description
+   * @param severity associated severity level
+   */
+  public record Event(long id, String message, Severity severity)
+  {
+    /**
+     * Compact constructor — validates state.
+     */
+    public Event
+    {
+      if (message == null || message.isBlank())
+      {
+        throw new IllegalArgumentException("message must not be blank");
+      }
+    }
+
+    /**
+     * Returns a formatted summary suitable for logging.
+     *
+     * @return formatted summary string
+     */
+    public String summary()
+    {
+      return "[" + severity + "] #" + id + ": " + message;
+    }
+  }
 
   // -------------------------------------------------------------------------
   // Interface with default method
   // -------------------------------------------------------------------------
-  private long                      nextId    = 1L;
+
+  /**
+   * Listener that reacts to {@link Event} objects.
+   */
+  public interface EventListener
+  {
+    /**
+     * Called when an event is emitted.
+     *
+     * @param event the emitted event
+     */
+    void onEvent(Event event);
+
+    /**
+     * Optional filter — by default accepts all events.
+     *
+     * @param event the candidate event
+     * @return {@code true} if the event should be delivered
+     */
+    default boolean accepts(Event event)
+    {
+      return true;
+    }
+  }
 
   // -------------------------------------------------------------------------
   // Fields
+  // -------------------------------------------------------------------------
+
+  private final List<Event>         events    = new ArrayList<>();
+  private final List<EventListener> listeners = new ArrayList<>();
+  private long                      nextId    = 1L;
+
+  // -------------------------------------------------------------------------
+  // Constructor
   // -------------------------------------------------------------------------
 
   /**
@@ -53,6 +130,10 @@ public class FormatterShowcase
   public FormatterShowcase()
   {
   }
+
+  // -------------------------------------------------------------------------
+  // Core methods — demonstrating control-flow formatting rules
+  // -------------------------------------------------------------------------
 
   /**
    * Emits an event and notifies all accepting listeners.
@@ -109,10 +190,6 @@ public class FormatterShowcase
     }
   }
 
-  // -------------------------------------------------------------------------
-  // Constructor
-  // -------------------------------------------------------------------------
-
   /**
    * Returns a human-readable label for the given severity using a switch expression.
    *
@@ -129,10 +206,6 @@ public class FormatterShowcase
       case CRITICAL -> "fatal";
     };
   }
-
-  // -------------------------------------------------------------------------
-  // Core methods — demonstrating control-flow formatting rules
-  // -------------------------------------------------------------------------
 
   /**
    * Reads all events and applies a transformation, demonstrating try-with-resources and multi-catch formatting.
@@ -248,78 +321,5 @@ public class FormatterShowcase
         "epsilon",  5
     );
     // @formatter:on
-  }
-
-  /**
-   * Severity levels used throughout this showcase.
-   */
-  public enum Severity
-  {
-    LOW, MEDIUM, HIGH, CRITICAL;
-
-    /**
-     * Returns {@code true} when action must be taken immediately.
-     *
-     * @return whether this severity is urgent
-     */
-    public boolean isUrgent()
-    {
-      return this == HIGH || this == CRITICAL;
-    }
-  }
-
-  /**
-   * Listener that reacts to {@link Event} objects.
-   */
-  public interface EventListener
-  {
-    /**
-     * Called when an event is emitted.
-     *
-     * @param event the emitted event
-     */
-    void onEvent(Event event);
-
-    /**
-     * Optional filter — by default accepts all events.
-     *
-     * @param event the candidate event
-     * @return {@code true} if the event should be delivered
-     */
-    default boolean accepts(Event event)
-    {
-      return true;
-    }
-  }
-
-  /**
-   * Immutable event record.
-   *
-   * @param id unique identifier
-   * @param message human-readable description
-   * @param severity associated severity level
-   */
-  public record Event(long id, String message, Severity severity)
-  {
-    /**
-     * Compact constructor — validates state.
-     */
-    public Event
-    {
-      if (message == null || message.isBlank())
-      {
-        throw new IllegalArgumentException("message must not be blank");
-      }
-    }
-
-    /**
-     * Returns a formatted summary suitable for logging.
-     *
-     * @return formatted summary string
-     */
-    public String summary()
-    {
-      return "[" + severity + "] #" + id + ": " + message;
-    }
   }
 }

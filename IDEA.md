@@ -11,6 +11,15 @@ Run `./mvnw formatter:format` at any time to apply the canonical format.
 
 ## What is configured automatically
 
+> [!IMPORTANT]
+> **The [Eclipse Code Formatter](https://plugins.jetbrains.com/plugin/6546-eclipse-code-formatter)
+> plugin is declared in `.devcontainer/devcontainer.json` and is installed automatically when
+> opening the project via JetBrains Gateway or a devcontainer-aware IDE.**
+> After the container starts, go to `Settings → Eclipse Code Formatter`, enable
+> **Use the Eclipse code formatter**, and point the config file at
+> `Common-Standards-Eclipse-Code-Profile.xml` (repo root). This gives 100% parity with
+> `./mvnw formatter:format`.
+
 Opening the project in IntelliJ IDEA activates the project-level code style
 (`.idea/codeStyles/Project.xml`) without any manual steps. The `.editorconfig` file
 at the repository root provides the same baseline settings to other EditorConfig-aware

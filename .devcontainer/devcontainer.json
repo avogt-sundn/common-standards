@@ -49,6 +49,11 @@
   "remoteUser": "vscode",
   "containerUser": "vscode",
   "customizations": {
+    "jetbrains": {
+      "plugins": [
+        "EclipseCodeFormatter"
+      ]
+    },
     "vscode": {
       "extensions": [
         "ms-azuretools.vscode-docker",

@@ -87,6 +87,10 @@
                         <directory>${project.build.sourceDirectory}</directory>
                         <directory>${project.build.directory}/generated-sources</directory>
                     </directories>
+                    <excludes>
+                        <!-- Intentionally unformatted — violation showcase used by tests -->
+                        <exclude>**/FormatterShowcaseUnformatted.java</exclude>
+                    </excludes>
                 </configuration>
                 <executions>
                     <execution>

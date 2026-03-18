@@ -278,7 +278,6 @@ public class FormatterShowcase
   {
     List<Integer> values = new ArrayList<>();
     int i = 0;
-
     do
     {
       values.add(i++);

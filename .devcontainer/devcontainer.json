@@ -87,9 +87,9 @@
         "terminal.integrated.profiles.linux": {
           "zsh": {
             "path": "zsh"
-          },
-          "editor.formatOnSave": true
-        }
+          }
+        },
+        "editor.formatOnSave": true
       }
     }
   }

@@ -53,8 +53,13 @@ All braces open on a new line. IntelliJ value `2` = "Next line".
 | `brace_position_for_anonymous_type_declaration = next_line` | `BRACE_STYLE = 2` |
 | `brace_position_for_switch = next_line` | `BRACE_STYLE = 2` |
 
-Exceptions (stay end-of-line, not configurable separately in IntelliJ):
-- `brace_position_for_lambda_body = end_of_line`
+Exception — lambda bodies use end-of-line (K&R), configured separately:
+
+| Eclipse setting | IntelliJ setting |
+|---|---|
+| `brace_position_for_lambda_body = end_of_line` | `LAMBDA_BRACE_STYLE = 0` |
+
+Exception — array initializers use end-of-line and are not configurable separately in IntelliJ:
 - `brace_position_for_array_initializer = end_of_line`
 
 ### Newlines before keywords
@@ -84,6 +89,25 @@ Exceptions (stay end-of-line, not configurable separately in IntelliJ):
 | `blank_lines_after_package` | `1` | default (1) |
 | `blank_lines_after_imports` | `1` | default (1) |
 
+### Spacing
+
+| Eclipse setting | IntelliJ setting |
+|---|---|
+| `insert_space_after_opening_brace_in_array_initializer = insert` | `SPACE_WITHIN_ARRAY_INITIALIZER_BRACES = true` |
+| `insert_space_before_closing_brace_in_array_initializer = insert` | `SPACE_WITHIN_ARRAY_INITIALIZER_BRACES = true` |
+
+### Wrapping
+
+IntelliJ value `1` = "Wrap if long" (Eclipse alignment flag `16` = wrap where necessary).
+
+| Eclipse setting | IntelliJ setting |
+|---|---|
+| `alignment_for_parameters_in_method_declaration = 16` | `METHOD_PARAMETERS_WRAP = 1` |
+| `alignment_for_arguments_in_method_invocation = 16` | `CALL_PARAMETERS_WRAP = 1` |
+| `alignment_for_superinterfaces_in_type_declaration = 16` | `EXTENDS_LIST_WRAP = 1` |
+| `alignment_for_throws_clause_in_method_declaration = 16` | `THROWS_LIST_WRAP = 1` |
+| `alignment_for_resources_in_try = 80` | `RESOURCE_LIST_WRAP = 1` |
+
 ### Field alignment
 
 | Eclipse setting | Value | IntelliJ setting |
@@ -100,11 +124,16 @@ IntelliJ's code style XML format. They are enforced exclusively by `./mvnw forma
 | Category | Examples |
 |---|---|
 | Fine-grained spacing | 200+ `insert_space_before/after_*` rules |
-| Wrapping strategies | `alignment_for_arguments_in_method_invocation`, `alignment_for_parameters_in_method_declaration`, etc. |
+| Other wrapping strategies | `alignment_for_enum_constants`, `alignment_for_selector_in_method_invocation`, etc. |
 | Import ordering | `blank_lines_between_import_groups` and import group layout |
 | Formatter tags | `@formatter:off` / `@formatter:on` (IntelliJ has its own mechanism via **Code Style → Formatter Control**) |
 
 For these, always run `./mvnw formatter:format` before committing.
+
+> **Tip — 100% parity with `mvn formatter:format`:** Install the
+> [Eclipse Code Formatter](https://plugins.jetbrains.com/plugin/6546-eclipse-code-formatter)
+> plugin, then configure it to use `Common-Standards-Eclipse-Code-Profile.xml`.
+> It uses the actual Eclipse JDT engine so output is identical.
 
 ---
 

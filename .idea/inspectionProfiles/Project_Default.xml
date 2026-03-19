@@ -1,0 +1,58 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <option name="myLocal" value="false" />
+
+    <!-- use_lambda: convert anonymous classes to lambda expressions -->
+    <inspection_tool class="AnonymousCanBeLambda" enabled="true" level="WARNING" enabled_by_default="true" />
+
+    <!-- convert_to_enhanced_for_loop: replace indexed for-loops with for-each -->
+    <inspection_tool class="ForLoopReplaceableByForEach" enabled="true" level="WARNING" enabled_by_default="true" />
+
+    <!-- primitive_rather_than_wrapper: replace Integer/Boolean etc. with int/boolean etc. -->
+    <inspection_tool class="UnnecessaryBoxing" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="UnnecessaryUnboxing" enabled="true" level="WARNING" enabled_by_default="true" />
+
+    <!-- stringbuilder_for_local_vars: flag string concatenation inside loops -->
+    <inspection_tool class="StringConcatenationInLoop" enabled="true" level="WARNING" enabled_by_default="true" />
+
+    <!-- boolean_value_rather_than_comparison: simplify x == true / x != false -->
+    <inspection_tool class="SimplifiableConditionalExpression" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="PointlessBooleanExpression" enabled="true" level="WARNING" enabled_by_default="true" />
+
+    <!-- add_missing_override_annotations: flag missing @Override on overriding methods -->
+    <inspection_tool class="MissingOverride" enabled="true" level="WARNING" enabled_by_default="true" />
+
+    <!-- add_missing_deprecated_annotations: flag missing @Deprecated -->
+    <inspection_tool class="MissingDeprecatedAnnotation" enabled="true" level="WARNING" enabled_by_default="true" />
+
+    <!-- remove_unused_private_fields / methods / types -->
+    <inspection_tool class="UnusedDeclaration" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ADD_MAINS_TO_ENTRIES" value="true" />
+    </inspection_tool>
+
+    <!-- remove_private_constructors: flag redundant no-arg constructors -->
+    <inspection_tool class="RedundantNoArgConstructor" enabled="true" level="WARNING" enabled_by_default="true" />
+
+    <!-- always_use_blocks: flag if/for/while bodies without braces -->
+    <inspection_tool class="ControlFlowStatementWithoutBraces" enabled="true" level="WARNING" enabled_by_default="true" />
+
+    <!-- remove_redundant_semicolons -->
+    <inspection_tool class="UnnecessarySemicolon" enabled="true" level="WARNING" enabled_by_default="true" />
+
+    <!-- remove_unnecessary_casts -->
+    <inspection_tool class="RedundantCast" enabled="true" level="WARNING" enabled_by_default="true" />
+
+    <!-- remove_redundant_type_arguments: flag explicit type arguments where diamond <> suffices -->
+    <inspection_tool class="RedundantTypeArguments" enabled="true" level="WARNING" enabled_by_default="true" />
+
+    <!-- make_private_fields_final: flag private fields that could be final -->
+    <inspection_tool class="FieldMayBeFinal" enabled="true" level="WARNING" enabled_by_default="true" />
+
+    <!-- add_serial_version_id: flag Serializable classes missing serialVersionUID -->
+    <inspection_tool class="SerializableHasSerialVersionUIDField" enabled="true" level="WARNING" enabled_by_default="true" />
+
+    <!-- use_this_for_non_static_*_only_if_necessary: flag unnecessary this. qualifiers -->
+    <inspection_tool class="UnnecessaryThis" enabled="true" level="WARNING" enabled_by_default="true" />
+  </profile>
+</component>

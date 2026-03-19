@@ -68,13 +68,13 @@ VS Code cannot import this XML file directly — it is Eclipse IDE-specific. To 
   "editor.formatOnSave": true,
   "files.trimTrailingWhitespace": true,
   "editor.codeActionsOnSave": {
-    "source.organizeImports": "explicit",
-    "source.fixAll.java": "explicit"
+    "source.organizeImports": "always",
+    "source.fixAll.java": "always"
   }
 }
 ```
 
-This covers `remove_unused_imports`, `organize_imports`, `format_source_code`, `remove_trailing_whitespaces`, and quick-fixable rules such as `remove_unnecessary_casts`, `add_missing_override_annotations`, and `use_lambda` (via the [Language Support for Java](https://marketplace.visualstudio.com/items?itemName=redhat.java) extension).
+Using `"always"` matches the Eclipse on-save behavior — imports are organized and quick-fixes applied automatically on every save. This covers `remove_unused_imports`, `organize_imports`, `format_source_code`, `remove_trailing_whitespaces`, and quick-fixable rules such as `remove_unnecessary_casts`, `add_missing_override_annotations`, `remove_redundant_type_arguments`, `boolean_value_rather_than_comparison`, `convert_to_enhanced_for_loop`, and `use_lambda` (via the [Language Support for Java](https://marketplace.visualstudio.com/items?itemName=redhat.java) extension).
 
 **2. Rules with no VS Code equivalent** — these must be applied manually or via Eclipse/IntelliJ:
 

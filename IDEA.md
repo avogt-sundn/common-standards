@@ -146,9 +146,68 @@ For these, always run `./mvnw formatter:format` before committing.
 
 ---
 
+---
+
+## Clean-up rules (save actions and inspections)
+
+`Common-Standards-Eclipse-Clean-Up-Rules.xml` cannot be imported into IntelliJ directly — it is an Eclipse IDE format. Two project files approximate the enabled rules:
+
+- **`.idea/saveActions.xml`** — configures automatic on-save actions (loaded by IntelliJ on project open)
+- **`.idea/inspectionProfiles/Project_Default.xml`** — enables inspection warnings for rules that cannot run on save
+
+### Save actions (on every save)
+
+| Eclipse clean-up rule | Save action |
+|---|---|
+| `format_source_code` / `correct_indentation` | Reformat code |
+| `organize_imports` / `remove_unused_imports` | Optimize imports |
+| `make_variable_declarations_final` / `make_local_variable_final` / `make_parameters_final` | Add `final` to local variables and parameters |
+| `add_missing_override_annotations` | Add missing `@Override` |
+
+Verify via **Settings → Tools → Actions on Save** — the four actions above should appear enabled.
+
+### Inspection warnings (flagged in the editor)
+
+| Eclipse clean-up rule | IntelliJ inspection |
+|---|---|
+| `use_lambda` | Anonymous class can be replaced with lambda |
+| `convert_to_enhanced_for_loop` | `for` loop replaceable by enhanced `for` |
+| `primitive_rather_than_wrapper` | Unnecessary boxing / unboxing |
+| `stringbuilder_for_local_vars` | String concatenation in loop |
+| `boolean_value_rather_than_comparison` | Pointless boolean expression / Simplifiable conditional |
+| `add_missing_override_annotations` | Missing `@Override` annotation |
+| `add_missing_deprecated_annotations` | Missing `@Deprecated` annotation |
+| `remove_unused_private_fields/methods/types` | Unused declaration |
+| `remove_private_constructors` | Redundant no-arg constructor |
+| `always_use_blocks` | Control flow statement without braces |
+| `remove_redundant_semicolons` | Unnecessary semicolons |
+| `remove_unnecessary_casts` | Redundant cast |
+| `remove_redundant_type_arguments` | Redundant type arguments |
+| `make_private_fields_final` | Field may be `final` |
+| `add_serial_version_id` | `Serializable` class without `serialVersionUID` |
+| `use_this_*_only_if_necessary` | Unnecessary `this` qualifier |
+
+All inspections appear in the editor as yellow warnings. Press **Alt+Enter** on a highlighted element to apply the quick-fix.
+
+Verify via **Settings → Editor → Inspections** — the active profile should be **Project Default**.
+
+### Rules with no IntelliJ equivalent
+
+| Eclipse clean-up rule | Notes |
+|---|---|
+| `do_while_rather_than_while` | Eclipse-only; no IntelliJ equivalent |
+| `remove_unnecessary_nls_tags` | Eclipse-specific NLS mechanism |
+| `overridden_assignment_move_decl` | Eclipse-only |
+| `one_if_rather_than_duplicate_blocks_that_fall_through` | No direct IntelliJ equivalent |
+| `add_missing_methods` | Eclipse auto-generation; no IntelliJ equivalent |
+
+---
+
 ## Verifying the setup
 
 1. Open the project in IntelliJ IDEA.
 2. Check **File → Project Structure** — the bottom status bar should show **2 spaces** for Java files.
 3. Create or edit a `.java` file — indentation should default to 2 spaces with Allman-style braces.
 4. Run `./mvnw formatter:format` — already-formatted files should not be modified.
+5. Check **Settings → Tools → Actions on Save** — confirm reformat, optimize imports, add final, and add @Override are enabled.
+6. Check **Settings → Editor → Inspections** — confirm the active profile is **Project Default** with the clean-up inspections enabled.

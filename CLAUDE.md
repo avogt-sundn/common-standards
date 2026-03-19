@@ -40,6 +40,7 @@ Every session, keep these goals in mind as the shared north star:
 | `else` / `catch` / `finally` | Each on a new line |
 | Binary operators | Spaces on both sides |
 | Lambda body brace | End-of-line |
+| Import order | `static` → `java.*` → `javax.*` → `org.*` → `com.*` → other |
 
 ---
 
@@ -48,5 +49,7 @@ Every session, keep these goals in mind as the shared north star:
 ```bash
 ./mvnw formatter:format    # format in-place
 ./mvnw formatter:validate  # check without modifying (CI)
+./mvnw impsort:sort        # sort imports in-place
+./mvnw impsort:check       # check import order without modifying (CI)
 ./mvnw test                # run all tests
 ```

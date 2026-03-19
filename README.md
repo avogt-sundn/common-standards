@@ -45,6 +45,7 @@ The formatter profile. Key rules:
 | Field alignment | Type members column-aligned |
 | Array initialisers | Spaces inside braces — `{ 1, 2, 3 }` |
 | `@formatter:off` / `@formatter:on` | Respected |
+| Import order | `static` → `java.*` → `javax.*` → `org.*` → `com.*` → other, one blank line between groups |
 
 Import this file in Eclipse via **Window → Preferences → Java → Code Style → Formatter → Import**.
 
@@ -70,7 +71,8 @@ VS Code cannot import this XML file directly — it is Eclipse IDE-specific. To 
   "editor.codeActionsOnSave": {
     "source.organizeImports": "always",
     "source.fixAll.java": "always"
-  }
+  },
+  "java.completion.importOrder": ["#", "java", "javax", "org", "com", ""]
 }
 ```
 
@@ -104,6 +106,12 @@ automatically format all Java sources under `src/main/java`.
 
 # Check without modifying (fails the build if any file is unformatted)
 ./mvnw formatter:validate
+
+# Sort imports in-place
+./mvnw impsort:sort
+
+# Check import order without modifying (fails the build if any file needs sorting)
+./mvnw impsort:check
 ```
 
 `FormatterShowcaseUnformatted.java` is **excluded** from the Maven formatter by design —

@@ -123,6 +123,24 @@ IntelliJ value `1` = "Wrap if long" (Eclipse alignment flag `16` = wrap where ne
 |---|---|---|
 | `align_type_members_on_columns` | `true` | `ALIGN_GROUP_FIELD_DECLARATIONS = true` |
 
+### Import ordering
+
+Configured via `IMPORT_LAYOUT_TABLE` in `.idea/codeStyles/Project.xml`. Must match `impsort-maven-plugin` so that IDE-organised imports are identical to what Maven produces.
+
+| Group | Content |
+|---|---|
+| 1 | All `static` imports |
+| _(blank line)_ | |
+| 2 | `java.*` |
+| _(blank line)_ | |
+| 3 | `javax.*` |
+| _(blank line)_ | |
+| 4 | `org.*` |
+| _(blank line)_ | |
+| 5 | `com.*` |
+| _(blank line)_ | |
+| 6 | Everything else |
+
 ---
 
 ## Settings NOT transferable to IntelliJ code style XML
@@ -134,7 +152,6 @@ IntelliJ's code style XML format. They are enforced exclusively by `./mvnw forma
 |---|---|
 | Fine-grained spacing | 200+ `insert_space_before/after_*` rules |
 | Other wrapping strategies | `alignment_for_enum_constants`, `alignment_for_selector_in_method_invocation`, etc. |
-| Import ordering | `blank_lines_between_import_groups` and import group layout |
 | Formatter tags | `@formatter:off` / `@formatter:on` (IntelliJ has its own mechanism via **Code Style → Formatter Control**) |
 
 For these, always run `./mvnw formatter:format` before committing.

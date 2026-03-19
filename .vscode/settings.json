@@ -1,5 +1,6 @@
 {
   "java.format.settings.url": "/workspaces/common-standards/Common-Standards-Eclipse-Code-Profile.xml",
+  "java.completion.importOrder": ["#", "java", "javax", "org", "com", ""],
   "java.format.settings.profile": "Common Standards Eclipse Code Profile for Java",
   "java.configuration.updateBuildConfiguration": "automatic",
   "java.compile.nullAnalysis.mode": "disabled",

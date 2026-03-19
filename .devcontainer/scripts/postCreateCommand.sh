@@ -10,7 +10,6 @@ echo \"export PATH='$PATH':/workspaces/${localWorkspaceFolderBasename}/.devconta
 sh $scriptdir/postCreate-Quarkus.sh
 sh $scriptdir/postCreate-Maven.sh
 sh $scriptdir/postCreate-Claude.sh
-sh $scriptdir/postCreate-Cypress.sh
 
 echo "Done devcontainering."
 # source $scriptdir/postCreate-Claude.sh

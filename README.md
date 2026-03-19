@@ -57,6 +57,39 @@ declaring class, add missing `serialVersionUID`.
 
 Import via **Window → Preferences → Java → Code Style → Clean Up → Import**.
 
+### VS Code
+
+VS Code cannot import this XML file directly — it is Eclipse IDE-specific. To approximate the enabled rules:
+
+**1. Add to `.vscode/settings.json`:**
+
+```json
+{
+  "editor.formatOnSave": true,
+  "files.trimTrailingWhitespace": true,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "explicit",
+    "source.fixAll.java": "explicit"
+  }
+}
+```
+
+This covers `remove_unused_imports`, `organize_imports`, `format_source_code`, `remove_trailing_whitespaces`, and quick-fixable rules such as `remove_unnecessary_casts`, `add_missing_override_annotations`, and `use_lambda` (via the [Language Support for Java](https://marketplace.visualstudio.com/items?itemName=redhat.java) extension).
+
+**2. Rules with no VS Code equivalent** — these must be applied manually or via Eclipse/IntelliJ:
+
+| Rule | What it does |
+|------|-------------|
+| `make_variable_declarations_final` | Adds `final` to local variables |
+| `make_parameters_final` | Adds `final` to method parameters |
+| `make_private_fields_final` | Adds `final` to private fields |
+| `primitive_rather_than_wrapper` | Replaces `Integer` with `int` etc. |
+| `do_while_rather_than_while` | Converts eligible `while` loops to `do-while` |
+| `stringbuilder_for_local_vars` | Replaces string concatenation in loops with `StringBuilder` |
+| `always_use_blocks` | Adds `{}` to single-line `if`/`for`/`while` bodies |
+
+There is no Maven plugin equivalent for clean-up rules — only formatting is enforced by `./mvnw formatter:format`.
+
 ---
 
 ## Maven formatter

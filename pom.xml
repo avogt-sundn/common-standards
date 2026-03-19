@@ -109,6 +109,7 @@
                     <groups>java,javax,org,com,</groups>
                     <staticGroups>*</staticGroups>
                     <staticAfter>false</staticAfter>
+                    <removeUnused>true</removeUnused>
                     <!-- javaparser in 1.9.0 does not know JAVA_25; cap at 21 (import syntax is unchanged) -->
                     <compliance>17</compliance>
                     <excludes>

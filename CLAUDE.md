@@ -1,0 +1,52 @@
+# Project Goals
+
+This repository defines and verifies the **common Java formatting rules** used across projects.
+Every session, keep these goals in mind as the shared north star:
+
+1. **Single source of truth for formatting** — The Eclipse formatter profile (`Common-Standards-Eclipse-Code-Profile.xml`) is the canonical definition of how Java code looks. All tooling (Maven plugin, IDE, tests) must agree with it.
+
+2. **Proven correctness** — Rules must be backed by automated tests. The test suite proves that violations are detected, that formatting is actually applied, and that applying the formatter is idempotent (a second pass changes nothing).
+
+3. **Consistent enforcement** — Formatting is enforced at build time via `./mvnw formatter:validate`, so no unformatted code can slip through CI.
+
+4. **IDE-agnostic where possible** — Eclipse is the primary target, but IntelliJ and VS Code approximations are documented so every developer can work in their preferred IDE while respecting the same rules.
+
+5. **Clean-up rules complement formatting** — The clean-up profile (`Common-Standards-Eclipse-Clean-Up-Rules.xml`) goes beyond whitespace: it enforces `final`, lambdas over anonymous classes, primitive types over wrappers, and more. These are IDE-applied; there is no Maven equivalent.
+
+6. **Intentional violations stay unformatted** — `FormatterShowcaseUnformatted.java` is permanently unformatted by design and excluded from the Maven formatter. Never format it automatically.
+
+---
+
+## IDE support
+
+**Supported** — first-class, actively maintained configurations:
+- VS Code
+- IntelliJ IDEA
+- Neovim
+- Maven (for build pipeline)
+
+**Less supported** — Eclipse is the origin of the formatter profile XML, but IDE setup for day-to-day development is not a priority here:
+- Eclipse
+
+---
+
+## Key rules at a glance
+
+| Rule | Value |
+|------|-------|
+| Indentation | 2 spaces, no tabs |
+| Line length | 120 characters |
+| Brace style | Allman (`{` on its own line) |
+| `else` / `catch` / `finally` | Each on a new line |
+| Binary operators | Spaces on both sides |
+| Lambda body brace | End-of-line |
+
+---
+
+## Common commands
+
+```bash
+./mvnw formatter:format    # format in-place
+./mvnw formatter:validate  # check without modifying (CI)
+./mvnw test                # run all tests
+```

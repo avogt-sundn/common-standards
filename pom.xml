@@ -109,6 +109,8 @@
                     <groups>java,javax,org,com,</groups>
                     <staticGroups>*</staticGroups>
                     <staticAfter>false</staticAfter>
+                    <!-- javaparser in 1.9.0 does not know JAVA_25; cap at 21 (import syntax is unchanged) -->
+                    <compliance>17</compliance>
                     <excludes>
                         <!-- Intentionally unformatted — violation showcase used by tests -->
                         <exclude>**/FormatterShowcaseUnformatted.java</exclude>

@@ -462,7 +462,7 @@ sync_eslint_config() {
     echo -e "  ${YELLOW}No angular.json found.${RESET}"
     read -r -p "  Enter frontend directory path relative to target root (or leave empty to skip): " user_input || true
     if [[ -z "$user_input" ]]; then
-      SKIPPED+=("eslint.config.mjs (no frontend dir)")
+      SKIPPED+=("eslint.config.js (no frontend dir)")
       return
     fi
     frontend_dir="$TARGET_DIR/$user_input"
@@ -474,12 +474,12 @@ sync_eslint_config() {
   prefix="${prefix:-app}"
 
   # Create transformed copy in a temp file
-  local src="$STANDARDS_DIR/frontend/eslint.config.mjs"
+  local src="$STANDARDS_DIR/frontend/eslint.config.js"
   local tmp
   tmp="$(mktemp)"
   sed "s/prefix: 'app'/prefix: '${prefix}'/g" "$src" > "$tmp"
 
-  local rel_dst="${frontend_dir#"$TARGET_DIR/"}/eslint.config.mjs"
+  local rel_dst="${frontend_dir#"$TARGET_DIR/"}/eslint.config.js"
   sync_file "$rel_dst" "$tmp"
   rm -f "$tmp"
 }
@@ -506,7 +506,7 @@ show_menu() {
   echo -e "${BOLD}Select config sets to transfer:${RESET}"
   echo "  [1] Universal    — .editorconfig, .gitattributes"
   echo "  [2] Java         — .java-config/, Maven plugin injection"
-  echo "  [3] Frontend     — .prettierrc, .prettierignore, eslint.config.mjs"
+  echo "  [3] Frontend     — .prettierrc, .prettierignore, eslint.config.js"
   echo "  [4] IntelliJ     — .idea/ files"
   echo "  [5] VS Code      — .vscode/ files"
   echo "  [6] Neovim       — .nvim.lua"

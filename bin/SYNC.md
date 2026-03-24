@@ -40,10 +40,10 @@ for manual comparison instead of injecting.
 |------|---------|
 | `.prettierrc` | Prettier config (2-space indent, 140-char line, single quotes, LF) |
 | `.prettierignore` | Paths excluded from Prettier |
-| `<frontend-dir>/eslint.config.mjs` | ESLint flat config for Angular/TypeScript |
+| `<frontend-dir>/eslint.config.js` | ESLint flat config for Angular/TypeScript |
 
 The script auto-detects the frontend directory by locating `angular.json`.
-For `eslint.config.mjs` it substitutes the Angular component prefix
+For `eslint.config.js` it substitutes the Angular component prefix
 (`app` by default) before copying.
 
 Printed after sync — add to `package.json` manually:
@@ -132,7 +132,7 @@ Files that are transformed before being written to the target:
 
 | Target file | Transformation |
 |-------------|---------------|
-| `<frontend-dir>/eslint.config.mjs` | `prefix: 'app'` replaced with the user-supplied Angular component prefix |
+| `<frontend-dir>/eslint.config.js` | `prefix: 'app'` replaced with the user-supplied Angular component prefix |
 | `pom.xml` | `formatter-maven-plugin` and `impsort-maven-plugin` blocks inserted before the last `</plugins>` tag |
 
 ---

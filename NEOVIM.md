@@ -141,7 +141,7 @@ when formatting files inside `frontend/`, or from a global install otherwise.
 
 For Angular ESLint diagnostics, configure `ts_ls` or a dedicated ESLint LSP
 (e.g. [eslint-lsp](https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#eslint))
-pointing at `frontend/eslint.config.mjs`.
+pointing at `frontend/eslint.config.js`.
 
 ---
 

@@ -97,7 +97,7 @@ Prettier reads `.prettierrc` from the repository root. Key rules:
 
 ### ESLint
 
-`eslint.useFlatConfig: true` is set so the VS Code ESLint extension uses `eslint.config.mjs`.
+`eslint.useFlatConfig: true` is set so the VS Code ESLint extension uses `eslint.config.js`.
 ESLint auto-fix runs on explicit save (`source.fixAll.eslint: explicit`), not on every auto-save.
 
 ---

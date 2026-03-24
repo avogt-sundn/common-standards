@@ -33,7 +33,7 @@ frontend/                            ← Angular 21 showcase app (welcome page)
     app.ts                           ← standalone AppComponent
     app.html                         ← welcome page template
     app.scss                         ← component styles
-  eslint.config.mjs                  ← Angular ESLint config
+  eslint.config.js                   ← Angular ESLint config
   package.json                       ← Angular deps (inherits root .prettierrc)
 ```
 
@@ -202,7 +202,7 @@ cd backend && ./mvnw test
 |------|---------|
 | `.prettierrc` | Prettier config — 2-space indent, 140 char width, single quotes, no trailing commas |
 | `.prettierignore` | Excludes build artifacts and IDE directories from Prettier |
-| `eslint.config.mjs` | Reference ESLint flat config with Angular 17+ and TypeScript rules |
+| `eslint.config.js` | Reference ESLint flat config with Angular 17+ and TypeScript rules |
 | `package.json` | Root npm devDependencies (Prettier, ESLint) and helper scripts |
 
 ### Key frontend rules
@@ -251,7 +251,7 @@ formatter for `typescript`, `html`, `css`, `scss`, and `json` filetypes.
 1. Copy these files to your project root:
    - `.prettierrc`
    - `.prettierignore` (adjust paths as needed)
-   - `frontend/eslint.config.mjs` (change `prefix: 'app'` to your project's selector prefix)
+   - `frontend/eslint.config.js` (change `prefix: 'app'` to your project's selector prefix)
 2. Install devDependencies:
    ```bash
    npm install --save-dev prettier eslint @eslint/js angular-eslint typescript-eslint

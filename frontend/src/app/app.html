@@ -1,0 +1,29 @@
+<main>
+  <header>
+    <h1>{{ title }}</h1>
+    <p>Frontend code formatting and linting standards for Angular projects.</p>
+  </header>
+
+  <section>
+    <h2>Formatting</h2>
+    <ul>
+      <li>Formatter: <strong>Prettier</strong></li>
+      <li>Print width: <strong>140</strong></li>
+      <li>Indent: <strong>2 spaces</strong></li>
+      <li>Quotes: <strong>single</strong></li>
+      <li>Semicolons: <strong>always</strong></li>
+      <li>Trailing commas: <strong>none</strong></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Linting</h2>
+    <ul>
+      <li>Linter: <strong>ESLint</strong> with angular-eslint</li>
+      <li>Components: <strong>standalone</strong> (Angular 17+)</li>
+      <li>Templates: accessibility rules enforced</li>
+    </ul>
+  </section>
+
+  <router-outlet />
+</main>

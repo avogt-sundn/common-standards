@@ -15,6 +15,16 @@ mvnw text eol=lf
 *.cmd text eol=crlf
 *.bat text eol=crlf
 
+# TypeScript, JavaScript, HTML, CSS, JSON — always LF
+*.ts text eol=lf
+*.js text eol=lf
+*.mjs text eol=lf
+*.html text eol=lf
+*.css text eol=lf
+*.scss text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+
 # Binaries — no line ending conversion
 *.jar binary
 *.png binary

@@ -1,0 +1,38 @@
+main {
+  font-family: sans-serif;
+  max-width: 720px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+
+  header {
+    border-bottom: 2px solid #333;
+    margin-bottom: 2rem;
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      color: #555;
+    }
+  }
+
+  section {
+    margin-bottom: 2rem;
+
+    h2 {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+
+      li {
+        padding: 0.25rem 0;
+      }
+    }
+  }
+}

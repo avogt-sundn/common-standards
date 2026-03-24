@@ -1,0 +1,24 @@
+{
+  "name": "common-standards",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Common formatting and linting standards for Java and Angular/TypeScript",
+  "scripts": {
+    "format:check": "prettier --check \"**/*.{ts,html,css,scss,json}\"",
+    "format:fix": "prettier --write \"**/*.{ts,html,css,scss,json}\"",
+    "lint:check": "eslint",
+    "lint:fix": "eslint --fix",
+    "frontend:serve": "cd frontend && ng serve",
+    "frontend:build": "cd frontend && ng build",
+    "frontend:format:check": "prettier --check \"frontend/**/*.{ts,html,css,scss}\"",
+    "frontend:lint:check": "cd frontend && ng lint"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9",
+    "angular-eslint": "^19",
+    "eslint": "^9",
+    "prettier": "^3",
+    "typescript": "~5.7",
+    "typescript-eslint": "^8"
+  }
+}

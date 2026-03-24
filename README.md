@@ -1,19 +1,22 @@
-# Common Standards — Java Code Formatting
+# Common Standards — Code Formatting and Linting
 
-This repository defines and verifies the common Java formatting rules used across projects.
-It ships two Eclipse configuration files, a reference implementation, and automated tests
-that prove the rules are correct and consistently enforced by Maven.
+This repository defines and verifies the common formatting and linting rules used across projects —
+Java (Eclipse/Maven) and Angular/TypeScript (Prettier/ESLint).
+It ships Eclipse configuration files, Prettier/ESLint configs, a reference implementation, and automated tests
+that prove the rules are correct and consistently enforced.
 
 ---
 
 ## Repository layout
 
 ```
-Common-Standards-Eclipse-Code-Profile.xml   ← formatter rules (Eclipse + Maven)
-Common-Standards-Eclipse-Clean-Up-Rules.xml ← clean-up rules (Eclipse IDE only)
+Common-Standards-Eclipse-Code-Profile.xml   ← Java formatter rules (Eclipse + Maven)
+Common-Standards-Eclipse-Clean-Up-Rules.xml ← Java clean-up rules (Eclipse IDE only)
+.prettierrc                                 ← Frontend formatter rules (Prettier)
+eslint.config.mjs                           ← Frontend linting rules (ESLint, reference)
 
 src/main/java/com/example/formatter/
-  FormatterShowcase.java             ← reference: correctly formatted code
+  FormatterShowcase.java             ← reference: correctly formatted Java code
   FormatterShowcaseUnformatted.java  ← violation showcase: same code, wrong formatting
 
 src/test/java/com/example/formatter/
@@ -22,6 +25,14 @@ src/test/java/com/example/formatter/
 
 src/test/resources/
   verify-formatter.sh                ← shell script driven by the integration test
+
+frontend/                            ← Angular 21 showcase app (welcome page)
+  src/app/
+    app.ts                           ← standalone AppComponent
+    app.html                         ← welcome page template
+    app.scss                         ← component styles
+  eslint.config.mjs                  ← Angular ESLint config
+  package.json                       ← Angular deps (inherits root .prettierrc)
 ```
 
 ---
@@ -174,3 +185,80 @@ The original `FormatterShowcaseUnformatted.java` is **never touched** by the tes
 # Run all tests
 ./mvnw test
 ```
+
+---
+
+## Frontend standards (Angular / TypeScript)
+
+### Configuration files
+
+| File | Purpose |
+|------|---------|
+| `.prettierrc` | Prettier config — 2-space indent, 140 char width, single quotes, no trailing commas |
+| `.prettierignore` | Excludes build artifacts and IDE directories from Prettier |
+| `eslint.config.mjs` | Reference ESLint flat config with Angular 17+ and TypeScript rules |
+| `package.json` | Root npm devDependencies (Prettier, ESLint) and helper scripts |
+
+### Key frontend rules
+
+| Rule | Value |
+|------|-------|
+| Formatter | Prettier |
+| Indentation | 2 spaces, no tabs |
+| Line length | 140 characters |
+| Quotes | Single quotes |
+| Semicolons | Always |
+| Trailing commas | None |
+| Bracket same line | Yes |
+| Line endings | LF |
+| Component style | Standalone (Angular 17+) |
+| Selector prefix | `app` (adjust per project) |
+
+### Commands
+
+```bash
+# Format all frontend files (check only — for CI)
+npm run format:check
+
+# Format all frontend files in-place
+npm run format:fix
+
+# Lint (check only)
+npm run lint:check
+
+# Lint with auto-fix
+npm run lint:fix
+
+# Angular showcase app
+npm run frontend:serve   # ng serve on port 4200
+npm run frontend:build   # production build
+```
+
+### IDE integration
+
+**IntelliJ IDEA** — Prettier runs automatically on save and reformat via `.idea/prettier.xml`.
+Requires the bundled Prettier plugin (included in Ultimate; install separately in Community Edition).
+
+**VS Code** — Prettier is set as the default formatter for TypeScript, HTML, CSS, SCSS, and JSON
+in `.vscode/settings.json`. ESLint auto-fix runs on explicit save action.
+
+**Neovim** — Relies on `.editorconfig` for basics. For Prettier, configure
+[conform.nvim](https://github.com/stevearc/conform.nvim) or similar with `prettier` as the
+formatter for `typescript`, `html`, `css`, `scss`, and `json` filetypes.
+
+### Copying to your Angular project
+
+1. Copy these files to your project root:
+   - `.prettierrc`
+   - `.prettierignore` (adjust paths as needed)
+   - `eslint.config.mjs` (change `prefix: 'app'` to your project's selector prefix)
+2. Install devDependencies:
+   ```bash
+   npm install --save-dev prettier eslint @eslint/js angular-eslint typescript-eslint
+   ```
+3. Add scripts to your `package.json`:
+   ```json
+   "lint": "eslint",
+   "format:check": "prettier --check \"src/**/*.{ts,html,css,scss}\"",
+   "format:fix": "prettier --write \"src/**/*.{ts,html,css,scss}\""
+   ```

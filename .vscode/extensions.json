@@ -3,6 +3,9 @@
         "vscjava.vscode-java-pack",
         "redhat.vscode-xml",
         "redhat.vscode-yaml",
-        "editorconfig.editorconfig"
+        "editorconfig.editorconfig",
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint",
+        "angular.ng-template"
     ]
 }

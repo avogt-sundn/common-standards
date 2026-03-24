@@ -1,0 +1,12 @@
+target/
+node_modules/
+dist/
+coverage/
+.angular/
+.idea/
+.vscode/
+.mvn/
+Common-Standards-Eclipse-*.xml
+package-lock.json
+frontend/dist/
+frontend/.angular/

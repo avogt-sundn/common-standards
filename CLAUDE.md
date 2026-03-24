@@ -1,9 +1,9 @@
 # Project Goals
 
-This repository defines and verifies the **common Java formatting rules** used across projects.
+This repository defines and verifies the **common formatting and linting rules** used across projects — Java (Eclipse/Maven) and Angular/TypeScript (Prettier/ESLint).
 Every session, keep these goals in mind as the shared north star:
 
-1. **Single source of truth for formatting** — The Eclipse formatter profile (`Common-Standards-Eclipse-Code-Profile.xml`) is the canonical definition of how Java code looks. All tooling (Maven plugin, IDE, tests) must agree with it.
+1. **Single source of truth for formatting** — The Eclipse formatter profile (`Common-Standards-Eclipse-Code-Profile.xml`) is the canonical definition of how Java code looks. For frontend, `.prettierrc` is the canonical definition. All tooling (Maven plugin, IDE, tests) must agree with these.
 
 2. **Proven correctness** — Rules must be backed by automated tests. The test suite proves that violations are detected, that formatting is actually applied, and that applying the formatter is idempotent (a second pass changes nothing).
 
@@ -32,6 +32,8 @@ Every session, keep these goals in mind as the shared north star:
 
 ## Key rules at a glance
 
+### Java
+
 | Rule | Value |
 |------|-------|
 | Indentation | 2 spaces, no tabs |
@@ -42,14 +44,39 @@ Every session, keep these goals in mind as the shared north star:
 | Lambda body brace | End-of-line |
 | Import order | `static` → `java.*` → `javax.*` → `org.*` → `com.*` → other |
 
+### Frontend (Angular/TypeScript)
+
+| Rule | Value |
+|------|-------|
+| Formatter | Prettier |
+| Indentation | 2 spaces, no tabs |
+| Line length | 140 characters |
+| Quotes | Single quotes |
+| Semicolons | Always |
+| Trailing commas | None |
+| Bracket same line | Yes |
+| Line endings | LF |
+| Component style | Standalone (Angular 17+) |
+
 ---
 
 ## Common commands
 
 ```bash
+# Java
 ./mvnw formatter:format    # format in-place
 ./mvnw formatter:validate  # check without modifying (CI)
 ./mvnw impsort:sort        # sort imports in-place
 ./mvnw impsort:check       # check import order without modifying (CI)
 ./mvnw test                # run all tests
+
+# Frontend (from repo root)
+npm run format:check       # check Prettier formatting (CI)
+npm run format:fix         # format with Prettier in-place
+npm run lint:check         # check ESLint rules (CI)
+npm run lint:fix           # lint and auto-fix
+
+# Angular showcase app
+npm run frontend:serve     # ng serve on port 4200
+npm run frontend:build     # production build
 ```

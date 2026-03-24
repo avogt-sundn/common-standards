@@ -20,6 +20,29 @@ indent_size = 4
 indent_style = space
 indent_size = 2
 
+[*.{ts,js,mjs}]
+indent_style = space
+indent_size = 2
+max_line_length = 140
+
+[*.html]
+indent_style = space
+indent_size = 2
+max_line_length = 140
+
+[*.{css,scss}]
+indent_style = space
+indent_size = 2
+
+[*.json]
+indent_style = space
+indent_size = 2
+
+[*.md]
+indent_style = space
+indent_size = 2
+trim_trailing_whitespace = false
+
 [{mvnw,*.sh}]
 end_of_line = lf
 

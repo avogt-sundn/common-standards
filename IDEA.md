@@ -1,11 +1,11 @@
 # IntelliJ IDEA Configuration
 
 This project enforces Java formatting via the Maven `formatter-maven-plugin` using
-`Common-Standards-Eclipse-Code-Profile.xml` as the source of truth. The settings below
+`backend/Common-Standards-Eclipse-Code-Profile.xml` as the source of truth. The settings below
 have been transferred into IntelliJ IDEA's project code style (`.idea/codeStyles/Project.xml`)
 so that the IDE's editor matches the formatter as closely as possible.
 
-Run `./mvnw formatter:format` at any time to apply the canonical format.
+Run `cd backend && ./mvnw formatter:format` at any time to apply the canonical format.
 
 ---
 
@@ -17,8 +17,8 @@ Run `./mvnw formatter:format` at any time to apply the canonical format.
 > opening the project via JetBrains Gateway or a devcontainer-aware IDE.**
 > After the container starts, go to `Settings → Eclipse Code Formatter`, enable
 > **Use the Eclipse code formatter**, and point the config file at
-> `Common-Standards-Eclipse-Code-Profile.xml` (repo root). This gives 100% parity with
-> `./mvnw formatter:format`.
+> `backend/Common-Standards-Eclipse-Code-Profile.xml`. This gives 100% parity with
+> `cd backend && ./mvnw formatter:format`.
 
 Opening the project in IntelliJ IDEA activates the project-level code style
 (`.idea/codeStyles/Project.xml`) without any manual steps. The `.editorconfig` file
@@ -146,7 +146,7 @@ Configured via `IMPORT_LAYOUT_TABLE` in `.idea/codeStyles/Project.xml`. Must mat
 ## Settings NOT transferable to IntelliJ code style XML
 
 These rules are defined in the Eclipse profile but have no direct equivalent in
-IntelliJ's code style XML format. They are enforced exclusively by `./mvnw formatter:format`.
+IntelliJ's code style XML format. They are enforced exclusively by `cd backend && ./mvnw formatter:format`.
 
 | Category | Examples |
 |---|---|
@@ -154,11 +154,11 @@ IntelliJ's code style XML format. They are enforced exclusively by `./mvnw forma
 | Other wrapping strategies | `alignment_for_enum_constants`, `alignment_for_selector_in_method_invocation`, etc. |
 | Formatter tags | `@formatter:off` / `@formatter:on` (IntelliJ has its own mechanism via **Code Style → Formatter Control**) |
 
-For these, always run `./mvnw formatter:format` before committing.
+For these, always run `cd backend && ./mvnw formatter:format` before committing.
 
 > **Tip — 100% parity with `mvn formatter:format`:** Install the
 > [Eclipse Code Formatter](https://plugins.jetbrains.com/plugin/6546-eclipse-code-formatter)
-> plugin, then configure it to use `Common-Standards-Eclipse-Code-Profile.xml`.
+> plugin, then configure it to use `backend/Common-Standards-Eclipse-Code-Profile.xml`.
 > It uses the actual Eclipse JDT engine so output is identical.
 
 ---
@@ -225,6 +225,6 @@ Verify via **Settings → Editor → Inspections** — the active profile should
 1. Open the project in IntelliJ IDEA.
 2. Check **File → Project Structure** — the bottom status bar should show **2 spaces** for Java files.
 3. Create or edit a `.java` file — indentation should default to 2 spaces with Allman-style braces.
-4. Run `./mvnw formatter:format` — already-formatted files should not be modified.
+4. Run `cd backend && ./mvnw formatter:format` — already-formatted files should not be modified.
 5. Check **Settings → Tools → Actions on Save** — confirm reformat, optimize imports, add final, and add @Override are enabled.
 6. Check **Settings → Editor → Inspections** — confirm the active profile is **Project Default** with the clean-up inspections enabled.

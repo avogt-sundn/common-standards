@@ -17,6 +17,7 @@
     "ghcr.io/devcontainers/features/common-utils:2.5.6": {},
     "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {},
     "ghcr.io/devcontainers/features/java:1": {
+      "version": "25",
       "installMaven": "true",
       "mavenVersion": "3.9.10",
       "installGradle": "true",
@@ -38,7 +39,7 @@
     "OTEL_HOST": "grafana-otel-lgtm"
   },
   // Use 'initializeCommand' to run commands on the host before container gets created.
-  "initializeCommand": "touch ${localEnv:HOME}/.vscode/.zsh_history;docker network create docker-default-network || echo Fine. Using existing network.",
+  "initializeCommand": "mkdir -p ${localEnv:HOME}/.vscode && touch ${localEnv:HOME}/.vscode/.zsh_history && docker network create docker-default-network || echo Fine. Using existing network.",
   "runArgs": [
     "--network=docker-default-network",
     // change this once you rename the project folder!

@@ -1,15 +1,19 @@
 #!/usr/bin/env bash
 
-scriptdir="$(dirname "$0")"
-echo $scriptdir
-pwd
-set -e
+set -euo pipefail
 
-echo \"export PATH='$PATH':/workspaces/${localWorkspaceFolderBasename}/.devcontainer/scripts\" >> /home/vscode/.zshrc
+scriptdir="$(cd "$(dirname "$0")" && pwd)"
+workspace_dir="${containerWorkspaceFolder:-$(pwd)}"
+scripts_path="$workspace_dir/.devcontainer/scripts"
 
-sh $scriptdir/postCreate-Quarkus.sh
-sh $scriptdir/postCreate-Maven.sh
-sh $scriptdir/postCreate-Claude.sh
+# Add scripts to PATH once for interactive shells in the container.
+if ! grep -Fq "$scripts_path" /home/vscode/.zshrc; then
+	echo "export PATH=\"\$PATH:$scripts_path\"" >> /home/vscode/.zshrc
+fi
+
+bash "$scriptdir/postCreate-Quarkus.sh"
+bash "$scriptdir/postCreate-Maven.sh"
+bash "$scriptdir/postCreate-Claude.sh"
 
 echo "Done devcontainering."
 # source $scriptdir/postCreate-Claude.sh

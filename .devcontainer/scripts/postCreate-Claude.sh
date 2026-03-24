@@ -4,6 +4,7 @@
 set -e
 echo "Claude Code ..."
 
+mkdir -p /home/vscode/.aws
 sudo chown -R vscode:vscode /home/vscode/.aws
 
 npm install -g @anthropic-ai/claude-code \

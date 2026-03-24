@@ -66,6 +66,8 @@ vim.o.exrc = true   -- enables per-project .nvim.lua files
 
 Neovim 0.9+ picks up `.editorconfig` automatically — no plugin needed.
 
+See [NEOVIM.md](NEOVIM.md) for the full plugin list, jdtls formatter setup, and clean-up rule coverage.
+
 ---
 
 ## 3. Verify the full setup

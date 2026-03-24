@@ -7,7 +7,7 @@ FROM mcr.microsoft.com/devcontainers/java:dev-25-jdk-bookworm
 
 ENV IGNORE_NOTICE=true
 # BEGIN ------ install common utils: ping, dig, ncat, pip, yq
-RUN apt update && apt install -y iputils-ping dnsutils file apache2-utils python3-pip httpie telnet
+RUN apt update && apt install -y iputils-ping dnsutils file apache2-utils python3-pip httpie telnet ripgrep
 #RUN pip install yq
 #   END ------ install common utils: ping, dig, ncat, pip, yq
 

@@ -33,7 +33,7 @@ The [Language Support for Java](https://marketplace.visualstudio.com/items?itemN
 extension (included in `vscode-java-pack`) reads the Eclipse formatter profile directly via:
 
 ```json
-"java.format.settings.url": "/workspaces/common-standards/.java-config/Common-Standards-Eclipse-Code-Profile.xml",
+"java.format.settings.url": "${workspaceFolder}/.java-config/Common-Standards-Eclipse-Code-Profile.xml",
 "java.format.settings.profile": "Common Standards Eclipse Code Profile for Java"
 ```
 

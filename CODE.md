@@ -6,7 +6,7 @@ are checked in to `.vscode/settings.json` so that the IDE's editor matches the f
 as closely as possible.
 
 Run `cd backend && ./mvnw formatter:format` at any time to apply the canonical Java format.
-Run `npm run format:fix` at any time to apply the canonical frontend format.
+Run `cd frontend && npm run format:fix` at any time to apply the canonical frontend format.
 
 ---
 
@@ -166,5 +166,5 @@ or apply them manually / via IntelliJ.
 3. Open a `.java` file — the status bar should show **Spaces: 2**.
 4. Run `cd backend && ./mvnw formatter:format` — already-formatted files should not be modified.
 5. Open a `.ts` file — format on save should produce output consistent with `.prettierrc`.
-6. Run `npm run format:check` from the repository root — should pass with no issues.
-7. Run `npm run lint:check` — should pass with no issues.
+6. Run `cd frontend && npm run format:check` — should pass with no issues.
+7. Run `cd frontend && npm run lint` — should pass with no issues.

@@ -71,13 +71,11 @@ cd backend
 ./mvnw impsort:check       # check import order without modifying (CI)
 ./mvnw test                # run all tests
 
-# Frontend (from repo root)
+# Frontend (run from frontend/)
+cd frontend
 npm run format:check       # check Prettier formatting (CI)
 npm run format:fix         # format with Prettier in-place
-npm run lint:check         # check ESLint rules (CI)
-npm run lint:fix           # lint and auto-fix
-
-# Angular showcase app
-npm run frontend:serve     # ng serve on port 4200
-npm run frontend:build     # production build
+npm run lint               # check ESLint rules (CI)
+npm start                  # ng serve on port 4200
+npm run build              # production build
 ```

@@ -221,28 +221,22 @@ cd backend && ./mvnw test
 
 ### Commands
 
+All frontend commands run from `frontend/`:
+
 ```bash
-# Format all frontend files (check only — for CI)
-npm run format:check
+cd frontend
 
-# Format all frontend files in-place
-npm run format:fix
-
-# Lint (check only)
-npm run lint:check
-
-# Lint with auto-fix
-npm run lint:fix
-
-# Angular showcase app
-npm run frontend:serve   # ng serve on port 4200
-npm run frontend:build   # production build
+npm run format:check   # check Prettier formatting (CI)
+npm run format:fix     # format in-place
+npm run lint           # check ESLint rules (CI)
+npm start              # ng serve on port 4200
+npm run build          # production build
 ```
 
 ### IDE integration
 
 **IntelliJ IDEA** — Prettier runs automatically on save and reformat via `.idea/prettier.xml`.
-Requires the bundled Prettier plugin (included in Ultimate; install separately in Community Edition).
+The Prettier plugin is bundled in Ultimate; install it separately in Community Edition.
 
 **VS Code** — Prettier is set as the default formatter for TypeScript, HTML, CSS, SCSS, and JSON
 in `.vscode/settings.json`. ESLint auto-fix runs on explicit save action.
@@ -256,7 +250,7 @@ formatter for `typescript`, `html`, `css`, `scss`, and `json` filetypes.
 1. Copy these files to your project root:
    - `.prettierrc`
    - `.prettierignore` (adjust paths as needed)
-   - `eslint.config.mjs` (change `prefix: 'app'` to your project's selector prefix)
+   - `frontend/eslint.config.mjs` (change `prefix: 'app'` to your project's selector prefix)
 2. Install devDependencies:
    ```bash
    npm install --save-dev prettier eslint @eslint/js angular-eslint typescript-eslint

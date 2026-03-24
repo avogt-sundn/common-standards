@@ -19,9 +19,7 @@ For detailed reference on individual IDE settings, see [IDEA.md](IDEA.md) and [C
 
 ```bash
 git clone <repo-url>
-cd common-standards
-npm install                   # install Prettier and ESLint (root)
-cd frontend && npm install    # install Angular and its ESLint deps
+cd common-standards/frontend && npm install
 ```
 
 ---
@@ -74,11 +72,10 @@ cd backend
 ./mvnw impsort:check         # must pass — correct import order
 ./mvnw test                  # must pass — 3 tests
 
-# Frontend: format and lint checks (from repo root)
-cd ..
+# Frontend: format and lint checks (from frontend/)
+cd ../frontend
 npm run format:check         # must pass — Prettier
-npm run lint:check           # must pass — ESLint (no TS files at root, always passes)
-cd frontend && npx eslint    # must pass — Angular ESLint
+npm run lint                 # must pass — Angular ESLint
 ```
 
 ---
@@ -103,9 +100,10 @@ npm run build             # production build
 npm run lint              # ESLint check
 ```
 
-### Formatting (from repo root)
+### Formatting
 
 ```bash
+cd frontend
 npm run format:fix        # Prettier — fix all TS/HTML/CSS/SCSS/JSON files
 npm run format:check      # Prettier — check only (for CI)
 ```

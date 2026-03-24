@@ -7,7 +7,9 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "lint": "eslint"
+    "lint": "eslint",
+    "format:check": "prettier --check \"src/**/*.{ts,html,css,scss}\"",
+    "format:fix": "prettier --write \"src/**/*.{ts,html,css,scss}\""
   },
   "private": true,
   "packageManager": "npm@11.9.0",
@@ -28,6 +30,7 @@
     "@eslint/js": "^9",
     "angular-eslint": "^19",
     "eslint": "^9",
+    "prettier": "^3",
     "typescript": "~5.9.2",
     "typescript-eslint": "^8"
   }

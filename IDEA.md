@@ -1,7 +1,7 @@
 # IntelliJ IDEA Configuration
 
 This project enforces Java formatting via the Maven `formatter-maven-plugin` using
-`backend/Common-Standards-Eclipse-Code-Profile.xml` as the source of truth. The settings below
+`.java-config/Common-Standards-Eclipse-Code-Profile.xml` as the source of truth. The settings below
 have been transferred into IntelliJ IDEA's project code style (`.idea/codeStyles/Project.xml`)
 so that the IDE's editor matches the formatter as closely as possible.
 
@@ -21,7 +21,7 @@ for two plugins declared in `.idea/externalDependencies.xml`. Install both with 
 | Plugin | Purpose |
 |---|---|
 | [Save Actions](https://plugins.jetbrains.com/plugin/7642-save-actions) (`com.dubreuia`) | Runs reformat, optimize imports, add `final`, add `@Override` on every save. Config is in `.idea/saveActions.xml` — no further setup needed. |
-| [Eclipse Code Formatter](https://plugins.jetbrains.com/plugin/6546-eclipse-code-formatter) (`EclipseCodeFormatter`) | Uses the Eclipse JDT engine for 100% parity with `cd backend && ./mvnw formatter:format`. Config is in `.idea/eclipseCodeFormatter.xml` — points to `backend/Common-Standards-Eclipse-Code-Profile.xml`. |
+| [Eclipse Code Formatter](https://plugins.jetbrains.com/plugin/6546-eclipse-code-formatter) (`EclipseCodeFormatter`) | Uses the Eclipse JDT engine for 100% parity with `cd backend && ./mvnw formatter:format`. Config is in `.idea/eclipseCodeFormatter.xml` — points to `.java-config/Common-Standards-Eclipse-Code-Profile.xml`. |
 
 After installing, **restart IntelliJ** — both plugins activate automatically from the committed config files.
 
@@ -161,7 +161,7 @@ For these, always run `cd backend && ./mvnw formatter:format` before committing.
 
 > **Tip — 100% parity with `mvn formatter:format`:** Install the
 > [Eclipse Code Formatter](https://plugins.jetbrains.com/plugin/6546-eclipse-code-formatter)
-> plugin, then configure it to use `backend/Common-Standards-Eclipse-Code-Profile.xml`.
+> plugin, then configure it to use `.java-config/Common-Standards-Eclipse-Code-Profile.xml`.
 > It uses the actual Eclipse JDT engine so output is identical.
 
 ---

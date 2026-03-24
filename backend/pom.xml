@@ -81,7 +81,7 @@
                 <artifactId>formatter-maven-plugin</artifactId>
                 <version>2.29.0</version>
                 <configuration>
-                    <configFile>${project.basedir}/Common-Standards-Eclipse-Code-Profile.xml</configFile>
+                    <configFile>${project.basedir}/../.java-config/Common-Standards-Eclipse-Code-Profile.xml</configFile>
                     <encoding>UTF-8</encoding>
                     <directories>
                         <directory>${project.build.sourceDirectory}</directory>

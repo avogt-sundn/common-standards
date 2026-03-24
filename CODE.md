@@ -1,7 +1,7 @@
 # VS Code Configuration
 
 This project enforces Java formatting via the Maven `formatter-maven-plugin` using
-`backend/Common-Standards-Eclipse-Code-Profile.xml` as the source of truth. The settings below
+`.java-config/Common-Standards-Eclipse-Code-Profile.xml` as the source of truth. The settings below
 are checked in to `.vscode/settings.json` so that the IDE's editor matches the formatter
 as closely as possible.
 
@@ -33,7 +33,7 @@ The [Language Support for Java](https://marketplace.visualstudio.com/items?itemN
 extension (included in `vscode-java-pack`) reads the Eclipse formatter profile directly via:
 
 ```json
-"java.format.settings.url": "/workspaces/common-standards/backend/Common-Standards-Eclipse-Code-Profile.xml",
+"java.format.settings.url": "/workspaces/common-standards/.java-config/Common-Standards-Eclipse-Code-Profile.xml",
 "java.format.settings.profile": "Common Standards Eclipse Code Profile for Java"
 ```
 

@@ -10,12 +10,13 @@ that prove the rules are correct and consistently enforced.
 ## Repository layout
 
 ```
-.prettierrc                                      ← Frontend formatter rules (Prettier)
-eslint.config.mjs                                ← Frontend linting rules (ESLint, reference)
-
-backend/                                         ← Java Maven project
+.java-config/                                    ← Shared Java tooling config (copy to new projects)
   Common-Standards-Eclipse-Code-Profile.xml      ← Java formatter rules (Eclipse + Maven)
   Common-Standards-Eclipse-Clean-Up-Rules.xml    ← Java clean-up rules (Eclipse IDE only)
+
+.prettierrc                                      ← Frontend formatter rules (Prettier)
+
+backend/                                         ← Java Maven project
   pom.xml
   mvnw
   src/main/java/com/example/formatter/

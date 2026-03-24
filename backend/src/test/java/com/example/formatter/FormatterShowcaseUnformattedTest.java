@@ -35,7 +35,7 @@ import org.w3c.dom.NodeList;
 class FormatterShowcaseUnformattedTest
 {
 
-  private static final Path PROFILE_PATH = Paths.get("Common-Standards-Eclipse-Code-Profile.xml");
+  private static final Path PROFILE_PATH = Paths.get("../.java-config/Common-Standards-Eclipse-Code-Profile.xml");
   private static final Path SOURCE_PATH =
     Paths.get("src/main/java/com/example/formatter/FormatterShowcaseUnformatted.java");
 

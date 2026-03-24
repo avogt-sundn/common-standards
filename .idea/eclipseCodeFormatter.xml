@@ -4,7 +4,7 @@
     <option name="projectSpecificProfile">
       <ProjectSpecificProfile>
         <option name="formatter" value="ECLIPSE" />
-        <option name="pathToConfigFileJava" value="$PROJECT_DIR$/backend/Common-Standards-Eclipse-Code-Profile.xml" />
+        <option name="pathToConfigFileJava" value="$PROJECT_DIR$/.java-config/Common-Standards-Eclipse-Code-Profile.xml" />
         <option name="selectedJavaProfile" value="Common Standards Eclipse Code Profile for Java" />
       </ProjectSpecificProfile>
     </option>

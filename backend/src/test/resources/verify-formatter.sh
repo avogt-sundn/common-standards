@@ -20,7 +20,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(cd "$SCRIPT_DIR/../../.." && pwd)"
 
 MVNW="$PROJECT_ROOT/mvnw"
-PROFILE_XML="$PROJECT_ROOT/Common-Standards-Eclipse-Code-Profile.xml"
+PROFILE_XML="$PROJECT_ROOT/../.java-config/Common-Standards-Eclipse-Code-Profile.xml"
 SOURCE_FILE="$PROJECT_ROOT/src/main/java/com/example/formatter/FormatterShowcaseUnformatted.java"
 
 # Validate prerequisites

@@ -59,7 +59,7 @@ Neovim picks up indentation and line-ending rules from `.editorconfig` automatic
 
 For formatting on save, configure [conform.nvim](https://github.com/stevearc/conform.nvim) with:
 - `prettier` for `typescript`, `html`, `css`, `scss`, `json`
-- Your Java LSP formatter pointed at `backend/Common-Standards-Eclipse-Code-Profile.xml`
+- Your Java LSP formatter pointed at `.java-config/Common-Standards-Eclipse-Code-Profile.xml`
 
 ---
 

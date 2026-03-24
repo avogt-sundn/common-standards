@@ -55,11 +55,16 @@ See [CODE.md](CODE.md) for the full list of settings and coverage notes.
 
 ### Neovim
 
-Neovim picks up indentation and line-ending rules from `.editorconfig` automatically (requires an EditorConfig plugin, e.g. [editorconfig-vim](https://github.com/editorconfig/editorconfig-vim) or the built-in support in Neovim 0.9+).
+A project-local config file `.nvim.lua` is provided at the repo root. It configures
+[conform.nvim](https://github.com/stevearc/conform.nvim) for format-on-save and documents
+jdtls Java LSP setup pointing at `.java-config/Common-Standards-Eclipse-Code-Profile.xml`.
 
-For formatting on save, configure [conform.nvim](https://github.com/stevearc/conform.nvim) with:
-- `prettier` for `typescript`, `html`, `css`, `scss`, `json`
-- Your Java LSP formatter pointed at `.java-config/Common-Standards-Eclipse-Code-Profile.xml`
+**One-time global setup** — add to your `init.lua`:
+```lua
+vim.o.exrc = true   -- enables per-project .nvim.lua files
+```
+
+Neovim 0.9+ picks up `.editorconfig` automatically — no plugin needed.
 
 ---
 

@@ -13,6 +13,7 @@
       add_missing_override_annotations          → addMissingOverrideAnnotation
   -->
   <component name="SaveActionsSettings">
+    <option name="activateOnSave" value="true" />
     <option name="reformatCode" value="true" />
     <option name="optimizeImports" value="true" />
     <option name="addFinalModifier" value="true" />

@@ -11,19 +11,22 @@ Run `cd backend && ./mvnw formatter:format` at any time to apply the canonical f
 
 ## What is configured automatically
 
-> [!IMPORTANT]
-> **The [Eclipse Code Formatter](https://plugins.jetbrains.com/plugin/6546-eclipse-code-formatter)
-> plugin is declared in `.devcontainer/devcontainer.json` and is installed automatically when
-> opening the project via JetBrains Gateway or a devcontainer-aware IDE.**
-> After the container starts, go to `Settings → Eclipse Code Formatter`, enable
-> **Use the Eclipse code formatter**, and point the config file at
-> `backend/Common-Standards-Eclipse-Code-Profile.xml`. This gives 100% parity with
-> `cd backend && ./mvnw formatter:format`.
-
 Opening the project in IntelliJ IDEA activates the project-level code style
-(`.idea/codeStyles/Project.xml`) without any manual steps. The `.editorconfig` file
-at the repository root provides the same baseline settings to other EditorConfig-aware
-editors (VS Code, Vim, etc.).
+(`.idea/codeStyles/Project.xml`) and Prettier integration (`.idea/prettier.xml`)
+without any manual steps.
+
+**On first open, IntelliJ will show a "Required plugins are not installed" notification**
+for two plugins declared in `.idea/externalDependencies.xml`. Install both with one click:
+
+| Plugin | Purpose |
+|---|---|
+| [Save Actions](https://plugins.jetbrains.com/plugin/7642-save-actions) (`com.dubreuia`) | Runs reformat, optimize imports, add `final`, add `@Override` on every save. Config is in `.idea/saveActions.xml` — no further setup needed. |
+| [Eclipse Code Formatter](https://plugins.jetbrains.com/plugin/6546-eclipse-code-formatter) (`EclipseCodeFormatter`) | Uses the Eclipse JDT engine for 100% parity with `cd backend && ./mvnw formatter:format`. Config is in `.idea/eclipseCodeFormatter.xml` — points to `backend/Common-Standards-Eclipse-Code-Profile.xml`. |
+
+After installing, **restart IntelliJ** — both plugins activate automatically from the committed config files.
+
+The `.editorconfig` file at the repository root provides the same baseline settings to other
+EditorConfig-aware editors (VS Code, Vim, etc.).
 
 ---
 
@@ -223,8 +226,9 @@ Verify via **Settings → Editor → Inspections** — the active profile should
 ## Verifying the setup
 
 1. Open the project in IntelliJ IDEA.
-2. Check **File → Project Structure** — the bottom status bar should show **2 spaces** for Java files.
-3. Create or edit a `.java` file — indentation should default to 2 spaces with Allman-style braces.
-4. Run `cd backend && ./mvnw formatter:format` — already-formatted files should not be modified.
-5. Check **Settings → Tools → Actions on Save** — confirm reformat, optimize imports, add final, and add @Override are enabled.
-6. Check **Settings → Editor → Inspections** — confirm the active profile is **Project Default** with the clean-up inspections enabled.
+2. Install the two required plugins when prompted (Save Actions + Eclipse Code Formatter), then restart.
+3. Check the status bar — it should show **2 spaces** for Java files.
+4. Create or edit a `.java` file — indentation should default to 2 spaces with Allman-style braces.
+5. Save the file — reformat and optimize imports should run automatically.
+6. Run `cd backend && ./mvnw formatter:format` — already-formatted files should not be modified.
+7. Check **Settings → Editor → Inspections** — confirm the active profile is **Project Default** with the clean-up inspections enabled.

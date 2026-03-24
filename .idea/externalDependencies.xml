@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ExternalDependencies">
+    <!-- Applies save actions (reformat, optimize imports, add final, add @Override) on every save.
+         Config is in .idea/saveActions.xml — no manual setup needed once the plugin is installed. -->
+    <plugin id="com.dubreuia" />
+    <!-- Uses the Eclipse JDT formatter engine for 100% parity with ./mvnw formatter:format.
+         Config is in .idea/eclipseCodeFormatter.xml — points to backend/Common-Standards-Eclipse-Code-Profile.xml. -->
+    <plugin id="EclipseCodeFormatter" />
+  </component>
+</project>

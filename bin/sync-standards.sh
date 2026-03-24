@@ -167,6 +167,7 @@ sync_universal() {
   echo -e "\n${BOLD}── Universal ─────────────────────────────────────────────────────${RESET}"
   sync_file ".editorconfig"
   sync_file ".gitattributes"
+  sync_file "DEVELOPING.md"
 }
 
 sync_java() {
@@ -187,6 +188,7 @@ sync_frontend() {
 
 sync_intellij() {
   echo -e "\n${BOLD}── IntelliJ (.idea/) ─────────────────────────────────────────────${RESET}"
+  sync_file "IDEA.md"
   sync_file ".idea/.gitignore"
   sync_file ".idea/eclipseCodeFormatter.xml"
   sync_file ".idea/saveActions.xml"
@@ -200,12 +202,14 @@ sync_intellij() {
 
 sync_vscode() {
   echo -e "\n${BOLD}── VS Code (.vscode/) ────────────────────────────────────────────${RESET}"
+  sync_file "CODE.md"
   sync_file ".vscode/settings.json"
   sync_file ".vscode/extensions.json"
 }
 
 sync_neovim() {
   echo -e "\n${BOLD}── Neovim ────────────────────────────────────────────────────────${RESET}"
+  sync_file "NEOVIM.md"
   sync_file ".nvim.lua"
 }
 

@@ -16,6 +16,7 @@ already exists in the target the script shows a diff and prompts:
 |------|---------|
 | `.editorconfig` | Indentation, line endings, charset for all editors |
 | `.gitattributes` | LF line endings enforced in git |
+| `DEVELOPING.md` | Developer setup guide (prerequisites, IDE setup, verify steps) |
 
 ### [2] Java
 | File | Purpose |
@@ -57,6 +58,7 @@ And install: `npm install --save-dev prettier eslint @eslint/js angular-eslint t
 ### [4] IntelliJ
 | File | Purpose |
 |------|---------|
+| `IDEA.md` | IntelliJ settings reference (transferred rules, plugins, verification) |
 | `.idea/.gitignore` | IDE files to keep out of version control |
 | `.idea/eclipseCodeFormatter.xml` | Points IntelliJ's Eclipse Formatter plugin at the XML profile |
 | `.idea/saveActions.xml` | Built-in Actions on Save: reformat code and optimize imports |
@@ -70,12 +72,14 @@ And install: `npm install --save-dev prettier eslint @eslint/js angular-eslint t
 ### [5] VS Code
 | File | Purpose |
 |------|---------|
+| `CODE.md` | VS Code settings reference (extensions, Java formatting, Prettier, ESLint) |
 | `.vscode/settings.json` | Format-on-save, Prettier as default formatter, Java config paths |
 | `.vscode/extensions.json` | Recommended extensions (Prettier, Java Pack, ESLint, …) |
 
 ### [6] Neovim
 | File | Purpose |
 |------|---------|
+| `NEOVIM.md` | Neovim setup reference (plugins, LSP config, key maps) |
 | `.nvim.lua` | Project-local Neovim config (formatters, LSP, key maps) |
 
 ### [7] Devcontainer
@@ -99,11 +103,13 @@ Files transferred verbatim from this repo to the target:
 ```
 .editorconfig
 .gitattributes
+DEVELOPING.md
 .java-config/Common-Standards-Eclipse-Code-Profile.xml
 .java-config/Common-Standards-Eclipse-Clean-Up-Rules.xml
 .java-config/README.md
 .prettierrc
 .prettierignore
+IDEA.md
 .idea/.gitignore
 .idea/eclipseCodeFormatter.xml
 .idea/saveActions.xml
@@ -113,8 +119,10 @@ Files transferred verbatim from this repo to the target:
 .idea/codeStyles/codeStyleConfig.xml
 .idea/inspectionProfiles/Project_Default.xml
 .idea/inspectionProfiles/profiles_settings.xml
+CODE.md
 .vscode/settings.json
 .vscode/extensions.json
+NEOVIM.md
 .nvim.lua
 .devcontainer/devcontainer.json
 .devcontainer/Dockerfile

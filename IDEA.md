@@ -226,6 +226,58 @@ Verify via **Settings → Editor → Inspections** — the active profile should
 
 ---
 
+## Frontend (Angular / TypeScript / HTML)
+
+Prettier is the canonical formatter for all frontend files. IntelliJ's built-in Prettier integration is configured via `.idea/prettier.xml` — no manual setup needed.
+
+### What is configured automatically
+
+| File | Effect |
+|---|---|
+| `.idea/prettier.xml` | Enables Prettier, runs it on save and on reformat, for `*.ts`, `*.html`, `*.css`, `*.scss`, `*.json` |
+| `.prettierrc` (repo root) | Source of truth for all Prettier rules |
+
+### Prettier rules (from `.prettierrc`)
+
+| Option | Value | Effect |
+|---|---|---|
+| `printWidth` | `140` | Wrap lines longer than 140 characters |
+| `tabWidth` | `2` | 2-space indentation |
+| `useTabs` | `false` | Spaces, not tabs |
+| `singleQuote` | `true` | Single quotes in TypeScript/JavaScript |
+| `semi` | `true` | Always add semicolons |
+| `trailingComma` | `none` | No trailing commas |
+| `bracketSpacing` | `true` | Spaces inside `{ }` object literals |
+| `bracketSameLine` | `true` | HTML closing `>` stays on the last attribute line |
+| `endOfLine` | `lf` | Unix line endings |
+
+HTML file overrides: `*.component.html` uses the `angular` parser; all other `*.html` use the `html` parser.
+
+### ESLint
+
+ESLint rules live in `frontend/eslint.config.js`. IntelliJ picks them up automatically via its built-in ESLint integration when Node.js is configured.
+
+Key rules enforced:
+
+| Rule | Value |
+|---|---|
+| `@angular-eslint/prefer-standalone` | `error` — components must be standalone (Angular 17+) |
+| `@angular-eslint/component-selector` | `error` — element selector, `app-` prefix, kebab-case |
+| `@angular-eslint/directive-selector` | `error` — attribute selector, `app` prefix, camelCase |
+| `@typescript-eslint/no-explicit-any` | `warn` |
+| `@typescript-eslint/no-unused-vars` | `error` — variables/args prefixed with `_` are exempt |
+
+Verify ESLint is active via **Settings → Languages & Frameworks → JavaScript → Code Quality Tools → ESLint** — select **Automatic ESLint configuration**.
+
+### Verifying the frontend setup
+
+1. Open any `.ts` file — the status bar should show **Prettier** as the formatter.
+2. Save the file — Prettier should reformat it automatically.
+3. Run `cd frontend && npm run format:check` — no diff should be reported.
+4. Run `cd frontend && npm run lint` — no errors should be reported.
+
+---
+
 ## Verifying the setup
 
 1. Open the project in IntelliJ IDEA.

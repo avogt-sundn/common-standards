@@ -83,22 +83,36 @@ Prettier runs on save for all frontend files. Configured in `.vscode/settings.js
 "[json]":       { "editor.defaultFormatter": "esbenp.prettier-vscode" }
 ```
 
-Prettier reads `.prettierrc` from the repository root. Key rules:
+Prettier reads `.prettierrc` from the repository root. Rules:
 
-| Rule | Value |
-|---|---|
-| Print width | 140 |
-| Indent | 2 spaces |
-| Quotes | Single |
-| Semicolons | Always |
-| Trailing commas | None |
-| `*.component.html` | Angular parser |
-| `*.html` | HTML parser |
+| Option | Value | Effect |
+|---|---|---|
+| `printWidth` | `140` | Wrap lines longer than 140 characters |
+| `tabWidth` | `2` | 2-space indentation |
+| `useTabs` | `false` | Spaces, not tabs |
+| `singleQuote` | `true` | Single quotes in TypeScript/JavaScript |
+| `semi` | `true` | Always add semicolons |
+| `trailingComma` | `none` | No trailing commas |
+| `bracketSpacing` | `true` | Spaces inside `{ }` object literals |
+| `bracketSameLine` | `true` | HTML closing `>` stays on the last attribute line |
+| `endOfLine` | `lf` | Unix line endings |
+
+HTML file overrides: `*.component.html` uses the `angular` parser; all other `*.html` use the `html` parser.
 
 ### ESLint
 
 `eslint.useFlatConfig: true` is set so the VS Code ESLint extension uses `eslint.config.js`.
 ESLint auto-fix runs on explicit save (`source.fixAll.eslint: explicit`), not on every auto-save.
+
+Key rules enforced:
+
+| Rule | Value |
+|---|---|
+| `@angular-eslint/prefer-standalone` | `error` — components must be standalone (Angular 17+) |
+| `@angular-eslint/component-selector` | `error` — element selector, `app-` prefix, kebab-case |
+| `@angular-eslint/directive-selector` | `error` — attribute selector, `app` prefix, camelCase |
+| `@typescript-eslint/no-explicit-any` | `warn` |
+| `@typescript-eslint/no-unused-vars` | `error` — variables/args prefixed with `_` are exempt |
 
 ---
 

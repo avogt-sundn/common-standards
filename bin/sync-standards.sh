@@ -135,7 +135,7 @@ sync_file() {
 
   local choice
   while true; do
-    read -r -p "  [o]verwrite / [s]kip / [b]ackup+overwrite? " choice
+    read -r -p "  [o]verwrite / [s]kip / [b]ackup+overwrite? " choice || true
     case "$choice" in
       o|O)
         cp "$src" "$dst"
@@ -233,7 +233,7 @@ inject_maven_plugins() {
     done
     local choice
     while true; do
-      read -r -p "  Which pom.xml to update? [1-${#pom_files[@]}]: " choice
+      read -r -p "  Which pom.xml to update? [1-${#pom_files[@]}]: " choice || true
       if [[ "$choice" =~ ^[0-9]+$ ]] && (( choice >= 1 && choice <= ${#pom_files[@]} )); then
         pom_path="${pom_files[$((choice-1))]}"
         break
@@ -271,7 +271,7 @@ print(rel)
     echo ""
     if ! $DRY_RUN; then
       local choice
-      read -r -p "  Existing plugins detected. [v]iew standard config / [s]kip injection? " choice
+      read -r -p "  Existing plugins detected. [v]iew standard config / [s]kip injection? " choice || true
       case "$choice" in
         v|V) ;;  # fall through to print the standard config below
         *)
@@ -434,7 +434,7 @@ sync_eslint_config() {
   if [[ ${#angular_json[@]} -eq 1 ]]; then
     frontend_dir="$(dirname "${angular_json[0]}")"
     local rel="${frontend_dir#"$TARGET_DIR/"}"
-    read -r -p "  Frontend dir detected: ${rel:-.} — confirm? [Enter to accept / type path]: " user_input
+    read -r -p "  Frontend dir detected: ${rel:-.} — confirm? [Enter to accept / type path]: " user_input || true
     if [[ -n "$user_input" ]]; then
       frontend_dir="$TARGET_DIR/$user_input"
     fi
@@ -444,11 +444,11 @@ sync_eslint_config() {
       echo "    [$((i+1))] ${angular_json[$i]#"$TARGET_DIR/"}"
     done
     local choice
-    read -r -p "  Which frontend dir? [1-${#angular_json[@]}]: " choice
+    read -r -p "  Which frontend dir? [1-${#angular_json[@]}]: " choice || true
     frontend_dir="$(dirname "${angular_json[$((choice-1))]}")"
   else
     echo -e "  ${YELLOW}No angular.json found.${RESET}"
-    read -r -p "  Enter frontend directory path relative to target root (or leave empty to skip): " user_input
+    read -r -p "  Enter frontend directory path relative to target root (or leave empty to skip): " user_input || true
     if [[ -z "$user_input" ]]; then
       SKIPPED+=("eslint.config.mjs (no frontend dir)")
       return
@@ -458,7 +458,7 @@ sync_eslint_config() {
 
   # Prompt for Angular prefix
   local prefix
-  read -r -p "  Angular component prefix [default: app]: " prefix
+  read -r -p "  Angular component prefix [default: app]: " prefix || true
   prefix="${prefix:-app}"
 
   # Create transformed copy in a temp file
@@ -500,7 +500,7 @@ show_menu() {
   echo "  [6] Neovim       — .nvim.lua"
   echo "  [A] All of the above"
   echo ""
-  read -r -p "Enter choices (e.g. 1 3 4 or A): " raw_choices
+  read -r -p "Enter choices (e.g. 1 3 4 or A): " raw_choices || true
 
   # Normalize to uppercase, split on spaces/commas
   local choices

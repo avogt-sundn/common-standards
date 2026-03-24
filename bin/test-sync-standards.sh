@@ -101,17 +101,50 @@ EOF
   rm -rf "$tmp"
 }
 
+# ── Test 5: devcontainer sync ──────────────────────────────────────────────────
+test_devcontainer() {
+  header "5: devcontainer sync into empty repo"
+  local tmp
+  tmp=$(mktemp -d)
+  git -C "$tmp" init -q
+  git -C "$tmp" commit --allow-empty -m "init" -q
+
+  echo "7" | "$SYNC" "$tmp"
+
+  local missing=()
+  for f in \
+    .devcontainer/devcontainer.json \
+    .devcontainer/Dockerfile \
+    .devcontainer/scripts/postCreateCommand.sh \
+    .devcontainer/scripts/postCreate-Maven.sh \
+    .devcontainer/scripts/postCreate-Quarkus.sh \
+    .devcontainer/scripts/postCreate-Claude.sh \
+    .devcontainer/scripts/start-claude.sh \
+    .devcontainer/scripts/dps; do
+    [[ -f "$tmp/$f" ]] || missing+=("$f")
+  done
+
+  rm -rf "$tmp"
+
+  if [[ ${#missing[@]} -gt 0 ]]; then
+    fail "Missing devcontainer files: ${missing[*]}"
+  fi
+  pass "All devcontainer files synced"
+}
+
 # ── Dispatch ──────────────────────────────────────────────────────────────────
 case "${1:-all}" in
   1) test_syntax ;;
   2) test_dryrun ;;
   3) test_live ;;
   4) test_maven ;;
+  5) test_devcontainer ;;
   all)
     test_syntax
     test_dryrun
+    test_devcontainer
     echo -e "\n${GREEN}Non-interactive tests passed.${RESET}"
     echo "Run with argument 3 or 4 for interactive tests."
     ;;
-  *) echo "Usage: $(basename "$0") [1|2|3|4]" >&2; exit 1 ;;
+  *) echo "Usage: $(basename "$0") [1|2|3|4|5]" >&2; exit 1 ;;
 esac

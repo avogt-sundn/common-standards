@@ -209,6 +209,18 @@ sync_neovim() {
   sync_file ".nvim.lua"
 }
 
+sync_devcontainer() {
+  echo -e "\n${BOLD}── Devcontainer ──────────────────────────────────────────────────${RESET}"
+  sync_file ".devcontainer/devcontainer.json"
+  sync_file ".devcontainer/Dockerfile"
+  sync_file ".devcontainer/scripts/postCreateCommand.sh"
+  sync_file ".devcontainer/scripts/postCreate-Maven.sh"
+  sync_file ".devcontainer/scripts/postCreate-Quarkus.sh"
+  sync_file ".devcontainer/scripts/postCreate-Claude.sh"
+  sync_file ".devcontainer/scripts/start-claude.sh"
+  sync_file ".devcontainer/scripts/dps"
+}
+
 # ── Maven plugin injection ─────────────────────────────────────────────────────
 
 inject_maven_plugins() {
@@ -498,6 +510,7 @@ show_menu() {
   echo "  [4] IntelliJ     — .idea/ files"
   echo "  [5] VS Code      — .vscode/ files"
   echo "  [6] Neovim       — .nvim.lua"
+  echo "  [7] Devcontainer — .devcontainer/"
   echo "  [A] All of the above"
   echo ""
   read -r -p "Enter choices (e.g. 1 3 4 or A): " raw_choices || true
@@ -507,18 +520,19 @@ show_menu() {
   read -ra choices <<< "${raw_choices^^}"
 
   local do_universal=false do_java=false do_frontend=false
-  local do_intellij=false do_vscode=false do_neovim=false
+  local do_intellij=false do_vscode=false do_neovim=false do_devcontainer=false
 
   for c in "${choices[@]}"; do
     case "$c" in
       A) do_universal=true; do_java=true; do_frontend=true
-         do_intellij=true; do_vscode=true; do_neovim=true ;;
+         do_intellij=true; do_vscode=true; do_neovim=true; do_devcontainer=true ;;
       1) do_universal=true ;;
       2) do_java=true ;;
       3) do_frontend=true ;;
       4) do_intellij=true ;;
       5) do_vscode=true ;;
       6) do_neovim=true ;;
+      7) do_devcontainer=true ;;
       *) echo -e "${YELLOW}Unknown choice: $c (ignored)${RESET}" ;;
     esac
   done
@@ -527,8 +541,9 @@ show_menu() {
   $do_java      && sync_java
   $do_frontend  && sync_frontend
   $do_intellij  && sync_intellij
-  $do_vscode    && sync_vscode
-  $do_neovim    && sync_neovim
+  $do_vscode         && sync_vscode
+  $do_neovim         && sync_neovim
+  $do_devcontainer   && sync_devcontainer
 }
 
 # ── Summary ────────────────────────────────────────────────────────────────────

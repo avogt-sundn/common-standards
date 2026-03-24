@@ -59,8 +59,8 @@ And install: `npm install --save-dev prettier eslint @eslint/js angular-eslint t
 |------|---------|
 | `.idea/.gitignore` | IDE files to keep out of version control |
 | `.idea/eclipseCodeFormatter.xml` | Points IntelliJ's Eclipse Formatter plugin at the XML profile |
-| `.idea/saveActions.xml` | Format-on-save and optimize-imports-on-save |
-| `.idea/externalDependencies.xml` | Required plugins (Eclipse Code Formatter, Save Actions) |
+| `.idea/saveActions.xml` | Built-in Actions on Save: reformat code and optimize imports |
+| `.idea/externalDependencies.xml` | Required plugins (Eclipse Code Formatter) |
 | `.idea/prettier.xml` | Prettier integration settings |
 | `.idea/codeStyles/Project.xml` | IntelliJ native code style (approximates Eclipse rules) |
 | `.idea/codeStyles/codeStyleConfig.xml` | Tells IntelliJ to use project code style |

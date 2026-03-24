@@ -41,7 +41,7 @@ $PROJECT_DIR$/.java-config/Common-Standards-Eclipse-Code-Profile.xml
 
 `Common-Standards-Eclipse-Clean-Up-Rules.xml` is Eclipse IDE-only — there is no Maven equivalent.
 In IntelliJ the same rules are approximated by `.idea/inspectionProfiles/Project_Default.xml`.
-Rules handled by IntelliJ's save actions (organize imports, format on save, etc.) live in `.idea/saveActions.xml` instead.
+Rules handled by IntelliJ's built-in Actions on Save (organize imports, format on save) live in `.idea/saveActions.xml` instead.
 
 | Eclipse clean-up rule | IntelliJ inspection |
 |-----------------------|---------------------|
@@ -67,5 +67,5 @@ The following Eclipse rules have no direct IntelliJ inspection equivalent and ar
 | Eclipse clean-up rule | Reason |
 |-----------------------|--------|
 | `make_variable_declarations_final` / `make_parameters_final` / `make_local_variable_final` | IntelliJ has no warning for missing `final` on locals/parameters |
-| `organize_imports` / `remove_unused_imports` | Handled by save actions in `.idea/saveActions.xml` |
-| `remove_trailing_whitespaces` / `correct_indentation` / `format_source_code` | Handled by save actions in `.idea/saveActions.xml` |
+| `organize_imports` / `remove_unused_imports` | Handled by built-in Actions on Save in `.idea/saveActions.xml` |
+| `remove_trailing_whitespaces` / `correct_indentation` / `format_source_code` | Handled by built-in Actions on Save in `.idea/saveActions.xml` |

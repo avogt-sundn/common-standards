@@ -16,14 +16,15 @@ Opening the project in IntelliJ IDEA activates the project-level code style
 without any manual steps.
 
 **On first open, IntelliJ will show a "Required plugins are not installed" notification**
-for two plugins declared in `.idea/externalDependencies.xml`. Install both with one click:
+for the plugin declared in `.idea/externalDependencies.xml`. Install it with one click:
 
 | Plugin | Purpose |
 |---|---|
-| [Save Actions](https://plugins.jetbrains.com/plugin/7642-save-actions) (`com.dubreuia`) | Runs reformat, optimize imports, add `final`, add `@Override` on every save. Config is in `.idea/saveActions.xml` — no further setup needed. |
 | [Eclipse Code Formatter](https://plugins.jetbrains.com/plugin/6546-eclipse-code-formatter) (`EclipseCodeFormatter`) | Uses the Eclipse JDT engine for 100% parity with `cd backend && ./mvnw formatter:format`. Config is in `.idea/eclipseCodeFormatter.xml` — points to `.java-config/Common-Standards-Eclipse-Code-Profile.xml`. |
 
-After installing, **restart IntelliJ** — both plugins activate automatically from the committed config files.
+After installing, **restart IntelliJ** — the plugin activates automatically from the committed config files.
+
+**Actions on Save** (reformat code + optimize imports) are configured via IntelliJ's built-in mechanism in `.idea/saveActions.xml` — no plugin needed. To also apply `final` and `@Override` automatically on save, enable **Settings → Tools → Actions on Save → Run code cleanup** and ensure the Project Default inspection profile is active.
 
 The `.editorconfig` file at the repository root provides the same baseline settings to other
 EditorConfig-aware editors (VS Code, Vim, etc.).
@@ -177,14 +178,16 @@ For these, always run `cd backend && ./mvnw formatter:format` before committing.
 
 ### Save actions (on every save)
 
+IntelliJ's built-in Actions on Save handles formatting and imports automatically from `.idea/saveActions.xml`:
+
 | Eclipse clean-up rule | Save action |
 |---|---|
-| `format_source_code` / `correct_indentation` | Reformat code |
-| `organize_imports` / `remove_unused_imports` | Optimize imports |
-| `make_variable_declarations_final` / `make_local_variable_final` / `make_parameters_final` | Add `final` to local variables and parameters |
-| `add_missing_override_annotations` | Add missing `@Override` |
+| `format_source_code` / `correct_indentation` | Reformat code (built-in) |
+| `organize_imports` / `remove_unused_imports` | Optimize imports (built-in) |
+| `make_variable_declarations_final` / `make_local_variable_final` / `make_parameters_final` | Add `final` — enable **Run code cleanup** in Actions on Save |
+| `add_missing_override_annotations` | Add `@Override` — enable **Run code cleanup** in Actions on Save |
 
-Verify via **Settings → Tools → Actions on Save** — the four actions above should appear enabled.
+Verify via **Settings → Tools → Actions on Save** — "Reformat code" and "Optimize imports" should be checked. To also automate `final` and `@Override`, check "Run code cleanup" and confirm the active profile is **Project Default**.
 
 ### Inspection warnings (flagged in the editor)
 
@@ -226,7 +229,7 @@ Verify via **Settings → Editor → Inspections** — the active profile should
 ## Verifying the setup
 
 1. Open the project in IntelliJ IDEA.
-2. Install the two required plugins when prompted (Save Actions + Eclipse Code Formatter), then restart.
+2. Install the required plugin when prompted (Eclipse Code Formatter), then restart.
 3. Check the status bar — it should show **2 spaces** for Java files.
 4. Create or edit a `.java` file — indentation should default to 2 spaces with Allman-style braces.
 5. Save the file — reformat and optimize imports should run automatically.

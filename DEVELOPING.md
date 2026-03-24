@@ -30,9 +30,10 @@ cd common-standards/frontend && npm install
 
 1. Open the repository **root folder** in IntelliJ IDEA.
 2. IntelliJ will show a **"Required plugins are not installed"** notification — click **Install** to get:
-   - **Save Actions** — runs reformat, optimize imports, add `final`, add `@Override` on every save
    - **Eclipse Code Formatter** — uses the Eclipse JDT engine for exact parity with `./mvnw formatter:format`
-3. **Restart IntelliJ.** Both plugins activate automatically from the committed config — no further setup needed.
+3. **Restart IntelliJ.** The plugin activates automatically from the committed config — no further setup needed.
+
+> Reformat code and optimize imports on save are handled by IntelliJ's built-in Actions on Save (configured via `.idea/saveActions.xml`). No plugin needed.
 
 > **Verify:** open any `.java` file, save it, and confirm the file is reformatted automatically.
 > The status bar should show **Spaces: 2** for Java files.

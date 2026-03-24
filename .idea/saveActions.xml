@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <!--
-    IntelliJ "Actions on Save" configuration (Settings > Tools > Actions on Save).
+    IntelliJ built-in "Actions on Save" configuration (Settings > Tools > Actions on Save).
     Approximates the Eclipse clean-up profile on-save behavior.
 
     Covered rules:
-      format_source_code / correct_indentation  → reformatCode
-      organize_imports / remove_unused_imports  → optimizeImports
+      format_source_code / correct_indentation  → FormatOnSaveOptions (reformat code)
+      organize_imports / remove_unused_imports  → OptimizeOnSaveOptions (optimize imports)
+
+    Not covered automatically (configure manually via Actions on Save > "Run code cleanup"):
       make_variable_declarations_final
       make_local_variable_final
-      make_parameters_final                     → addFinalModifier (local vars + params)
-      add_missing_override_annotations          → addMissingOverrideAnnotation
+      make_parameters_final                     → enable "Add final modifier" inspection in cleanup profile
+      add_missing_override_annotations          → enable "Missing @Override" inspection in cleanup profile
   -->
-  <component name="SaveActionsSettings">
-    <option name="activateOnSave" value="true" />
-    <option name="reformatCode" value="true" />
-    <option name="optimizeImports" value="true" />
-    <option name="addFinalModifier" value="true" />
-    <option name="addMissingOverrideAnnotation" value="true" />
+  <component name="FormatOnSaveOptions">
+    <option name="myRunOnSave" value="true" />
+  </component>
+  <component name="OptimizeOnSaveOptions">
+    <option name="myRunOnSave" value="true" />
   </component>
 </project>

@@ -10,21 +10,22 @@ that prove the rules are correct and consistently enforced.
 ## Repository layout
 
 ```
-Common-Standards-Eclipse-Code-Profile.xml   ← Java formatter rules (Eclipse + Maven)
-Common-Standards-Eclipse-Clean-Up-Rules.xml ← Java clean-up rules (Eclipse IDE only)
-.prettierrc                                 ← Frontend formatter rules (Prettier)
-eslint.config.mjs                           ← Frontend linting rules (ESLint, reference)
+.prettierrc                                      ← Frontend formatter rules (Prettier)
+eslint.config.mjs                                ← Frontend linting rules (ESLint, reference)
 
-src/main/java/com/example/formatter/
-  FormatterShowcase.java             ← reference: correctly formatted Java code
-  FormatterShowcaseUnformatted.java  ← violation showcase: same code, wrong formatting
-
-src/test/java/com/example/formatter/
-  FormatterShowcaseUnformattedTest.java  ← unit test: Eclipse JDT formatter API
-  FormatterMavenIntegrationTest.java     ← integration test: real ./mvnw invocation
-
-src/test/resources/
-  verify-formatter.sh                ← shell script driven by the integration test
+backend/                                         ← Java Maven project
+  Common-Standards-Eclipse-Code-Profile.xml      ← Java formatter rules (Eclipse + Maven)
+  Common-Standards-Eclipse-Clean-Up-Rules.xml    ← Java clean-up rules (Eclipse IDE only)
+  pom.xml
+  mvnw
+  src/main/java/com/example/formatter/
+    FormatterShowcase.java             ← reference: correctly formatted Java code
+    FormatterShowcaseUnformatted.java  ← violation showcase: same code, wrong formatting
+  src/test/java/com/example/formatter/
+    FormatterShowcaseUnformattedTest.java  ← unit test: Eclipse JDT formatter API
+    FormatterMavenIntegrationTest.java     ← integration test: real ./mvnw invocation
+  src/test/resources/
+    verify-formatter.sh                ← shell script driven by the integration test
 
 frontend/                            ← Angular 21 showcase app (welcome page)
   src/app/
@@ -111,7 +112,11 @@ The `formatter-maven-plugin` is bound to the `process-sources` phase, so
 `./mvnw package` (or any lifecycle goal that includes `process-sources`) will
 automatically format all Java sources under `src/main/java`.
 
+All Maven commands are run from the `backend/` directory:
+
 ```bash
+cd backend
+
 # Format in-place
 ./mvnw formatter:format
 
@@ -182,8 +187,8 @@ Delegates to `verify-formatter.sh`, which:
 The original `FormatterShowcaseUnformatted.java` is **never touched** by the test.
 
 ```bash
-# Run all tests
-./mvnw test
+# Run all tests (from backend/)
+cd backend && ./mvnw test
 ```
 
 ---

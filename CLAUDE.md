@@ -63,7 +63,8 @@ Every session, keep these goals in mind as the shared north star:
 ## Common commands
 
 ```bash
-# Java
+# Java (run from backend/)
+cd backend
 ./mvnw formatter:format    # format in-place
 ./mvnw formatter:validate  # check without modifying (CI)
 ./mvnw impsort:sort        # sort imports in-place

@@ -24,7 +24,21 @@ cd common-standards/frontend && npm install
 
 ---
 
-## 2. IDE setup
+## 2. Environment variables
+
+A `.env` file at the repo root holds local secrets (e.g. `SECRET=...`). It is git-ignored and never committed.
+
+| Approach | How `.env` is loaded |
+|---|---|
+| **VS Code devcontainer** | Automatic — `--env-file=.env` is in `.devcontainer/devcontainer.json` `runArgs` |
+| **IntelliJ devcontainer** | Automatic — IntelliJ reads the same `devcontainer.json` |
+| **Local shell (no devcontainer)** | Manual — run `set -a; source .env; set +a` in your terminal before starting the app |
+
+For local shell usage, `set -a` enables auto-export so every variable defined in `.env` is exported to child processes. `set +a` turns auto-export back off afterwards.
+
+---
+
+## 3. IDE setup
 
 ### IntelliJ IDEA
 
@@ -71,7 +85,7 @@ See [NEOVIM.md](NEOVIM.md) for the full plugin list, jdtls formatter setup, and 
 
 ---
 
-## 3. Verify the full setup
+## 4. Verify the full setup
 
 ```bash
 # Java: format check and tests (from backend/)
@@ -88,7 +102,7 @@ npm run lint                 # must pass — Angular ESLint
 
 ---
 
-## 4. Day-to-day commands
+## 5. Day-to-day commands
 
 ### Backend (Java)
 

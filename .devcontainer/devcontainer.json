@@ -26,7 +26,9 @@
   },
   "forwardPorts": [
     7071,
-    4200, 4201, 4202, 4203
+    8080,
+    8081,
+    4200
   ],
   "mounts": [
     "source=localcache,target=/home/vscode/.m2,type=volume",
@@ -35,16 +37,16 @@
   "postCreateCommand": ".devcontainer/scripts/postCreateCommand.sh",
   "containerEnv": {
     "DOCKER_NETWORK": "docker-default-network",
-    //    "DB_HOST": "postgres",
+    "DB_HOST": "postgres-db",
     "OTEL_HOST": "grafana-otel-lgtm"
   },
   // Use 'initializeCommand' to run commands on the host before container gets created.
   "initializeCommand": "mkdir -p ${localEnv:HOME}/.vscode && touch ${localEnv:HOME}/.vscode/.zsh_history && docker network create docker-default-network || echo Fine. Using existing network.",
   "runArgs": [
     "--network=docker-default-network",
+    "--env-file=${localWorkspaceFolder}/.env",
     // change this once you rename the project folder!
-    "--hostname=${localWorkspaceFolderBasename}",
-    "--add-host=example.localhost.direct:127.0.0.2"
+    "--hostname=${localWorkspaceFolderBasename}"
   ],
   // Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
   "remoteUser": "vscode",

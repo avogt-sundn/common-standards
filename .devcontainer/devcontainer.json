@@ -41,7 +41,7 @@
     "OTEL_HOST": "grafana-otel-lgtm"
   },
   // Use 'initializeCommand' to run commands on the host before container gets created.
-  "initializeCommand": "mkdir -p ${localEnv:HOME}/.vscode && touch ${localEnv:HOME}/.vscode/.zsh_history && docker network create docker-default-network || echo Fine. Using existing network.",
+  "initializeCommand": "touch ${localWorkspaceFolder}/.env && mkdir -p ${localEnv:HOME}/.vscode && touch ${localEnv:HOME}/.vscode/.zsh_history && docker network create docker-default-network || echo Fine. Using existing network.",
   "runArgs": [
     "--network=docker-default-network",
     "--env-file=${localWorkspaceFolder}/.env",

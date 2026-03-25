@@ -8,3 +8,4 @@ dist/
 .angular/
 .history
 .idea/modules.xml
+.claude/settings.local.json
